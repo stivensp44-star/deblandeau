@@ -9,19 +9,19 @@
 
 :root {
   /* Colors */
-  --bg: #F8FAFF;
-  --surface: #EEF3FB;
-  --dark: #0D2B5E;
-  --dark-light: #153570;
-  --accent: #2563EB;
-  --accent-soft: #BFCFEF;
-  --accent-deep: #1A4FBF;
-  --text: #1E2A45;
-  --text-muted: #4A5F82;
-  --text-light: #8A9BBD;
+  --bg: #FAF8F5;
+  --surface: #F2EDE6;
+  --dark: #1B3A6B;
+  --dark-light: #244D8A;
+  --accent: #2B6CB0;
+  --accent-soft: #C8D9F0;
+  --accent-deep: #1A4F8A;
+  --text: #1E2D42;
+  --text-muted: #5A6E88;
+  --text-light: #8FA3BC;
   --white: #FFFFFF;
-  --border: rgba(37, 99, 235, 0.2);
-  --shadow: rgba(13, 43, 94, 0.08);
+  --border: rgba(43, 108, 176, 0.15);
+  --shadow: rgba(27, 58, 107, 0.08);
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body:    'Inter', system-ui, sans-serif;
   --fs-hero:   clamp(2.8rem, 6vw, 5.5rem);
@@ -226,10 +226,9 @@ h4, h5, h6    { font-family: var(--font-body); font-weight: 500; }
 .hero-left::after {
   content: '';
   position: absolute;
-  right: -80px; top: 0; bottom: 0;
-  width: 160px;
-  background: var(--dark);
-  clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+  right: 0; top: 0; bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.12);
   z-index: 3;
 }
 .hero-content { max-width: 560px; position: relative; z-index: 4; }
