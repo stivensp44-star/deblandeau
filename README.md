@@ -1,8 +1,10 @@
 # deblandeau.com — Project README
 
 ## Client
-**Daphnee Matthew, NP** — Medical Weight Loss & Aesthetics
+**Deblandeau Medical Aesthetic and Wellness, PLLC**
+Provider: **Daphnee Matthew, NP** — Medical Weight Loss & Aesthetics
 Near Boston, MA (town TBD)
+> Use the FULL legal name "Deblandeau Medical Aesthetic and Wellness, PLLC" (with comma) in titles, footers, schema, and legal text.
 Built by: Pierre Louis Ent LLC (Stivo)
 
 ## Live URL
@@ -38,19 +40,24 @@ https://deblandeau.com
 ---
 
 ## Color System (CSS Variables — DO NOT HARDCODE)
+Current palette is **Clinical Navy/Blue** (matches the live build).
 ```
---bg:           #FAFAF7   Warm off-white background
---surface:      #F0EDE6   Parchment card backgrounds
---dark:         #1A1A2E   Deep midnight navy (primary dark)
---dark-light:   #252540   Slightly lighter dark for hover/cards
---accent:       #C9A96E   Warm antique gold (CTA, highlights)
---accent-soft:  #E8D9BC   Light gold wash
---accent-deep:  #A8844A   Deep gold for hover states
---text:         #2C2C3E   Near-black body text
---text-muted:   #6B6B7B   Secondary/subdued text
+--bg:           #FAF8F5   Warm off-white background
+--surface:      #F2EDE6   Parchment card backgrounds
+--dark:         #1B3A6B   Deep clinical navy (primary dark)
+--dark-light:   #244D8A   Lighter navy for hover/cards
+--accent:       #2B6CB0   Clinical blue (CTA, highlights)
+--accent-soft:  #C8D9F0   Light blue wash
+--accent-deep:  #1A4F8A   Deep blue for hover states
+--text:         #0F1A2E   Near-black body text
+--text-muted:   #3D4A5C   Secondary/subdued text
+--text-light:   #5A6A82   Tertiary text / placeholders
 --white:        #FFFFFF
+--accent-rgb:   43, 108, 176   (for rgba() alpha shadows/borders)
+--dark-rgb:     27, 58, 107    (for rgba() alpha overlays)
 ```
 ⚠️ TO SWAP COLORS WHEN DAPHNEE DELIVERS: Change values in `:root` in `style.css` ONLY.
+⚠️ For any translucent shadow/border/overlay, use `rgba(var(--accent-rgb), …)` or `rgba(var(--dark-rgb), …)` — never hardcode hex/rgb.
 
 ## Typography
 - Display: `Cormorant Garamond` (Google Fonts — italic, editorial)
@@ -97,8 +104,25 @@ https://deblandeau.com
 
 ---
 
-## Booking System — When Daphnee Decides
-Go to `booking.html` → find `<div id="booking-embed-slot">` → replace the form with the embed code.
+## Forms — Live Submission (Web3Forms)
+Both the **booking** and **contact** forms POST to Web3Forms via `fetch` in `main.js`.
+To activate (one step):
+1. Get a free access key at https://web3forms.com (enter the destination email).
+2. In `booking.html` AND `contact.html`, replace `REPLACE-WITH-WEB3FORMS-ACCESS-KEY`
+   in `<input type="hidden" name="access_key" …>` with the real key.
+Until then, the form shows a graceful "not connected — email/call us" message.
+A hidden `botcheck` honeypot field is included for spam protection.
+
+## Favicon
+`assets/favicon.svg` — brand monogram (navy tile + blue "D"). Linked in every `<head>`.
+Swap with a real logo mark when available.
+
+## Fonts
+Loaded via `<link rel="preload"/stylesheet">` in each page `<head>` (NOT `@import` in CSS)
+for faster, non-render-blocking delivery. Keep all heads in sync.
+
+## Booking System — When Daphnee Decides (optional upgrade)
+To replace the form with a full scheduler: `booking.html` → `<div id="booking-embed-slot">` → swap the form for the embed.
 Options: Jane App / Square Appointments / Vagaro / Calendly.
 
 ## Google Maps — When Address Is Confirmed

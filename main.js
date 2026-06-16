@@ -70,19 +70,57 @@
     const forms = document.querySelectorAll('.contact-form');
     if (!forms.length) return;
     forms.forEach(function (form) {
+      const btn = form.querySelector('[type="submit"]');
+      const message = form.querySelector('.form-message');
+      const defaultLabel = btn ? btn.innerHTML : '';
+
+      function showMessage(text, ok) {
+        if (!message) return;
+        message.textContent = text;
+        message.classList.toggle('error', !ok);
+        message.style.display = 'block';
+      }
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        const btn = form.querySelector('[type="submit"]');
-        const message = form.querySelector('.form-message');
         if (!btn) return;
+
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+
         btn.textContent = 'Sending…';
         btn.disabled = true;
-        setTimeout(function () {
-          btn.textContent = 'Message Sent';
-          if (message) { message.textContent = "Thank you! We will be in touch within 24 hours."; message.style.display = 'block'; }
-          form.reset();
-          setTimeout(function () { btn.textContent = 'Send Message'; btn.disabled = false; if (message) message.style.display = 'none'; }, 5000);
-        }, 1200);
+
+        const formData = new FormData(form);
+        const endpoint = form.getAttribute('action');
+        const key = formData.get('access_key');
+
+        // If no real endpoint/key is configured yet, fail gracefully with guidance.
+        if (!endpoint || !key || key.indexOf('REPLACE') !== -1) {
+          showMessage('Form is not connected yet. Please email deblandeaumed@gmail.com or call us directly.', false);
+          btn.innerHTML = defaultLabel; btn.disabled = false;
+          return;
+        }
+
+        fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        })
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (data.success) {
+              btn.textContent = 'Sent ✓';
+              showMessage('Thank you! Daphnee will be in touch within one business day.', true);
+              form.reset();
+              setTimeout(function () { btn.innerHTML = defaultLabel; btn.disabled = false; if (message) message.style.display = 'none'; }, 6000);
+            } else {
+              throw new Error(data.message || 'Submission failed');
+            }
+          })
+          .catch(function () {
+            showMessage('Something went wrong. Please email deblandeaumed@gmail.com or try again.', false);
+            btn.innerHTML = defaultLabel; btn.disabled = false;
+          });
       });
     });
   }

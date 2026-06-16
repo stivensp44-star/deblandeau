@@ -3,13 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Book a consultation with Daphnee Matthew, NP at Deblandeau Medical Aesthetic and Wellness PLLC. Medical weight loss and aesthetic treatments." />
-  <title>Book a Consultation | Deblandeau Medical Aesthetic and Wellness PLLC</title>
+  <meta name="description" content="Book a consultation with Daphnee Matthew, NP at Deblandeau Medical Aesthetic and Wellness, PLLC. Medical weight loss and aesthetic treatments." />
+  <title>Book a Consultation | Deblandeau Medical Aesthetic and Wellness, PLLC</title>
+  <link rel="canonical" href="https://deblandeau.com/booking.html" />
+  <meta name="theme-color" content="#1B3A6B" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Deblandeau Medical Aesthetic and Wellness, PLLC" />
+  <meta property="og:title" content="Book a Consultation | Deblandeau Medical Aesthetic and Wellness, PLLC" />
+  <meta property="og:description" content="Your first consultation is a conversation. Book with Daphnee Matthew, NP." />
+  <meta property="og:url" content="https://deblandeau.com/booking.html" />
+  <meta property="og:image" content="https://deblandeau.com/assets/images/hero-daphnee.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <nav class="navbar" aria-label="Main navigation">
-    <a href="index.html" class="nav-logo">Deblandeau</a>
+    <a href="index.html" class="nav-logo" aria-label="Deblandeau Medical Aesthetic and Wellness, PLLC — home"><span class="logo-name">Deblandeau</span><span class="logo-sub">Medical Aesthetic &amp; Wellness</span></a>
     <ul class="nav-links" role="list">
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
@@ -78,7 +93,11 @@
             <div style="background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: clamp(1.5rem, 4vw, 2.5rem);">
               <h3 style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; margin-bottom: 0.5rem;">Request an Appointment</h3>
               <p style="font-size: var(--fs-small); color: var(--text-muted); margin-bottom: 2rem; line-height: 1.7;">Fill out this form and Daphnee will get back to you within 24 business hours.</p>
-              <form class="contact-form" novalidate aria-label="Appointment request form">
+              <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate aria-label="Appointment request form">
+                <input type="hidden" name="access_key" value="REPLACE-WITH-WEB3FORMS-ACCESS-KEY" />
+                <input type="hidden" name="subject" value="New appointment request — Deblandeau" />
+                <input type="hidden" name="from_name" value="Deblandeau Website" />
+                <input type="checkbox" name="botcheck" class="sr-only" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
                 <div class="form-row">
                   <div class="form-group"><label class="form-label" for="first-name">First Name <span style="color:var(--accent)">*</span></label><input class="form-control" type="text" id="first-name" name="first_name" placeholder="Jane" required autocomplete="given-name" /></div>
                   <div class="form-group"><label class="form-label" for="last-name">Last Name <span style="color:var(--accent)">*</span></label><input class="form-control" type="text" id="last-name" name="last_name" placeholder="Smith" required autocomplete="family-name" /></div>
@@ -102,7 +121,7 @@
                 <div class="form-group"><label class="form-label" for="preferred-time">Preferred Days / Times</label><input class="form-control" type="text" id="preferred-time" name="preferred_time" placeholder="e.g. Weekday mornings, Saturday afternoons…" /></div>
                 <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Request Appointment <span class="arrow">→</span></button>
                 <p class="form-note" style="margin-top: 1.25rem;">Your information is kept strictly private and never shared. By submitting, you agree to our <a href="privacy.html" style="color: var(--accent);">Privacy Policy</a>.</p>
-                <div class="form-message" style="margin-top: 1rem; padding: 1rem; background: rgba(201,169,110,0.1); border: 1px solid var(--accent); border-radius: var(--radius-sm); font-size: var(--fs-small); color: var(--accent-deep); display: none;" aria-live="polite"></div>
+                <div class="form-message" style="margin-top: 1rem; padding: 1rem; background: rgba(43,108,176,0.1); border: 1px solid var(--accent); border-radius: var(--radius-sm); font-size: var(--fs-small); color: var(--accent-deep); display: none;" aria-live="polite"></div>
               </form>
             </div>
           </div>
@@ -114,12 +133,12 @@
   <footer aria-label="Site footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand"><a href="index.html" class="nav-logo">Deblandeau</a><p>Medical weight loss and aesthetic treatments. </p><div class="footer-social"><a href="#" class="social-link" aria-label="Instagram"><span>ig</span></a><a href="#" class="social-link" aria-label="Facebook"><span>fb</span></a></div></div>
+        <div class="footer-brand"><a href="index.html" class="nav-logo" aria-label="Deblandeau Medical Aesthetic and Wellness, PLLC — home"><span class="logo-name">Deblandeau</span><span class="logo-sub">Medical Aesthetic &amp; Wellness</span></a><p>Medical weight loss and aesthetic treatments. </p><div class="footer-social"><a href="#" class="social-link" aria-label="Instagram"><span>ig</span></a><a href="#" class="social-link" aria-label="Facebook"><span>fb</span></a></div></div>
         <div class="footer-col"><h4>Services</h4><ul role="list"><li><a href="services.html#weight-loss">Medical Weight Loss</a></li><li><a href="services.html#injectables">Botox &amp; Fillers</a></li><li><a href="services.html#aesthetics">Skin Rejuvenation</a></li></ul></div>
         <div class="footer-col"><h4>Navigation</h4><ul role="list"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-        <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><span class="icon">📍</span><span></span></div><div class="footer-contact-item"><span class="icon">📞</span><span><!-- Phone --></span></div><div class="footer-contact-item"><span class="icon">✉</span><span><a href="mailto:info@deblandeau.com">info@deblandeau.com</a></span></div></div>
+        <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><span class="icon">📍</span><span>90 Chesterfield St<br>Hyde Park, MA 02136</span></div><div class="footer-contact-item"><span class="icon">📞</span><span><a href="tel:+16174337246">(617) 433-7246</a></span></div><div class="footer-contact-item"><span class="icon">✉</span><span><a href="mailto:deblandeaumed@gmail.com">deblandeaumed@gmail.com</a></span></div></div>
       </div>
-      <div class="footer-bottom"><p>&copy; <span id="year"></span> Deblandeau Medical Aesthetic and Wellness PLLC. All rights reserved.</p><div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a></div></div>
+      <div class="footer-bottom"><p>&copy; <span id="year"></span> Deblandeau Medical Aesthetic and Wellness, PLLC. All rights reserved.</p><div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a></div></div>
     </div>
   </footer>
   <script src="main.js"></script>
