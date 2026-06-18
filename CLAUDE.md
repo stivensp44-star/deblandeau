@@ -30,12 +30,17 @@ Project instructions for Claude Code. Read this before every session.
 2. **GitHub is the source of truth.** Commit after every session.
 3. Stop and confirm before any git push (this session was explicitly authorized).
 
-## Current palette — Clinical Navy/Blue (in `:root`)
+## Current palette — Natural Wellness Luxury (in `:root`)
+Updated June 17, 2026 — client-approved color rebrand. Real token names below
+(do NOT rename to `--color-*`); fonts unchanged (Cormorant Garamond + Inter).
 ```
---bg #FAF8F5  --surface #F2EDE6  --dark #1B3A6B  --dark-light #244D8A
---accent #2B6CB0  --accent-soft #C8D9F0  --accent-deep #1A4F8A
---text #0F1A2E  --text-muted #3D4A5C  --text-light #5A6A82  --white #FFFFFF
---accent-rgb 43,108,176   --dark-rgb 27,58,107
+--bg #F6F2EC (Warm Ivory)   --surface #FFFFFF (White)   --white #FFFFFF
+--dark #2C2F33 (Charcoal)   --dark-light #3D4147 (Charcoal, lighter)
+--accent #C9A66A (Brushed Gold)   --accent-soft rgba(201,166,106,0.12) (Gold tint)
+--accent-deep #8FA18F (Sage Leaf)
+--text #2C2F33 (Charcoal)   --text-muted #B9AA97 (Taupe)   --text-light #FFFFFF
+--border #E4DDD3 (Light Taupe)   --shadow rgba(44,47,51,0.08)
+--accent-rgb 201,166,106   --dark-rgb 44,47,51
 ```
 Typography: Cormorant Garamond (display) + Inter (body), loaded via
 `<link rel="preload"/stylesheet">` in each `<head>` — NOT `@import` in CSS.
