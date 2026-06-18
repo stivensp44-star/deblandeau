@@ -22,6 +22,9 @@ Project instructions for Claude Code. Read this before every session.
 - Hostinger CDN: hPanel "purge" is unreliable for edge cache. If a CSS/JS/asset
   change doesn't appear, bump a versioned URL (e.g. `?v=YYYYMMDD`) rather than
   trusting a purge.
+- **Stylesheet cache-bust:** all 8 pages link `style.css?v=20260617`. This is a
+  manual version — **bump the date suffix on every `style.css` change** (across
+  all pages) so the CDN serves fresh CSS.
 
 ## Iron build rules
 1. **CSS variables only** — never hardcode a color. All colors live in `:root`.
