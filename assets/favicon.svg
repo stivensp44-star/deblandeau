@@ -1,5 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Deblandeau">
   <rect width="64" height="64" rx="12" fill="#2C2F33"/>
-  <text x="50%" y="50%" dy="0.34em" text-anchor="middle"
-        font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="500" fill="#C9A66A">D</text>
+  <text x="35" y="51" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="500" fill="#C9A66A">D</text>
+  <path d="M22 52 C25 44 26 34 28.5 25 C29.5 21 30.5 17 31.5 13" fill="none" stroke="#8FA18F" stroke-width="1.6" stroke-linecap="round"/>
+  <g fill="#8FA18F">
+    <path d="M0 0 C3.5 -3 9 -3 13 -0.4 C9 2.2 3.5 2.6 0 0 Z" transform="translate(22 48) rotate(165) scale(1.15)"/>
+    <path d="M0 0 C3.5 -3 9 -3 13 -0.4 C9 2.2 3.5 2.6 0 0 Z" transform="translate(24.5 40) rotate(-145)"/>
+    <path d="M0 0 C3.5 -3 9 -3 13 -0.4 C9 2.2 3.5 2.6 0 0 Z" transform="translate(26 34) rotate(-35)"/>
+    <path d="M0 0 C3.5 -3 9 -3 13 -0.4 C9 2.2 3.5 2.6 0 0 Z" transform="translate(27.5 27) rotate(-125)"/>
+    <path d="M0 0 C3.5 -3 9 -3 13 -0.4 C9 2.2 3.5 2.6 0 0 Z" transform="translate(29.5 19) rotate(-45)"/>
+    <path d="M0 0 C3.5 -3 9 -3 13 -0.4 C9 2.2 3.5 2.6 0 0 Z" transform="translate(31 12) rotate(-80) scale(0.9)"/>
+  </g>
 </svg>
