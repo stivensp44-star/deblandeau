@@ -22,17 +22,20 @@ Project instructions for Claude Code. Read this before every session.
 - Hostinger CDN: hPanel "purge" is unreliable for edge cache. If a CSS/JS/asset
   change doesn't appear, bump a versioned URL (e.g. `?v=YYYYMMDD`) rather than
   trusting a purge.
-- **Stylesheet cache-bust:** all 8 pages link `style.css?v=20260704b`. This is a
+- **Stylesheet cache-bust:** all 8 pages link `style.css?v=20260704e`. This is a
   manual version — **bump the date suffix on every `style.css` change** (across
   all pages) so the CDN serves fresh CSS. `main.js` and `assets/favicon.svg`
   are versioned the same way (currently `?v=20260704` / `?v=20260704b`).
+- HTML pages are NOT versioned — if a user reports stale content that the repo
+  and live server both show as correct, it's their browser cache (Ctrl+F5).
 
 ## Iron build rules
 1. **CSS variables only** — never hardcode a color. All colors live in `:root`.
    For translucent shadows/borders/overlays use `rgba(var(--accent-rgb), …)` or
    `rgba(var(--dark-rgb), …)`.
 2. **GitHub is the source of truth.** Commit after every session.
-3. Stop and confirm before any git push (this session was explicitly authorized).
+3. Stop and confirm before any git push — every push needs explicit user
+   approval (push = live deploy).
 
 ## Current palette — Natural Wellness Luxury (in `:root`)
 Updated June 17, 2026 — client-approved color rebrand. Real token names below
@@ -49,19 +52,49 @@ Updated June 17, 2026 — client-approved color rebrand. Real token names below
 Typography: Cormorant Garamond (display) + Inter (body), loaded via
 `<link rel="preload"/stylesheet">` in each `<head>` — NOT `@import` in CSS.
 
+Palette source of truth: the client brand board (IMG_5753.jpeg, board tagline
+"Refined Care. Elevated Confidence."). Its five swatches ARE the tokens above —
+never re-derive or re-swap colors from it.
+
+## Logo & wordmark lockup (applied 2026-07-04, live @ 4c6c51b)
+- The brand mark (brushed-gold serif "D" + 6-leaf sage sprig) is an **inline
+  SVG recreation** of the brand-board monogram, using `var(--accent)` /
+  `var(--accent-deep)`. It appears in all 14 lockups (8 navbars + 6 footer
+  brands) and in `assets/favicon.svg` (hardcoded hexes there — favicon is a
+  standalone file, the one allowed exception to the no-hardcoding rule).
+- **`<span class="logo-name">eblandeau</span>` is INTENTIONAL, not a typo.**
+  The SVG mark is the "D"; CSS uppercases the rest so the lockup reads
+  DEBLANDEAU as one word. Full business name lives in each anchor's
+  `aria-label` for assistive tech. Never "fix" this text.
+- Lockup mechanics (style.css): `.nav-logo` uses `align-items: baseline`;
+  `.logo-mark` is 48px (nav) / 56px (footer) with `margin-right: -0.35rem`
+  (D glyph stops short of its viewBox edge) and `position: relative;
+  top: 10px/11px` (= 13/64 of height, the gap between the D-glyph baseline
+  y=51 and the svg bottom) so the D's foot sits on EBLANDEAU's baseline.
+  Hover pops the mark to `scale(1.15)`.
+- If the client ever sends an official vector logo export, it replaces the
+  recreated mark as a straight swap.
+
 ## Forms (booking.html + contact.html)
 - POST to Web3Forms via `fetch` in `main.js`; honeypot field `botcheck` for spam.
 - **TO ACTIVATE:** replace `REPLACE-WITH-WEB3FORMS-ACCESS-KEY` in both files with a
   real key from https://web3forms.com. Until then forms show a graceful
   "email/call us" message.
 
-## Pending from Daphnee (content still placeholdered)
-- About bio (3 paragraphs) + credentials/training
-- Real testimonials (names, locations)
-- Business hours (footer, contact, booking)
-- Professional photos → `assets/images/` (filenames already referenced in HTML)
-- Pricing stance; Instagram/Facebook links
-- Aesthetics service list (services.html `[Service 1/2/3]`)
+## Pending from Daphnee (slots cleaned 2026-07-04 — no visible placeholders)
+- About bio (3 paragraphs) + credential tags (empty tags were deleted; restore
+  markers are HTML comments in index.html + about.html)
+- Real testimonials → the whole #testimonials section in index.html is
+  commented out; re-enable it only when real names/locations exist
+- Business hours — interim copy everywhere is "By appointment only"; per-day
+  rows are preserved as an HTML comment in booking.html
+- Professional photos → `assets/images/` is EMPTY on purpose (filenames already
+  referenced in HTML; owner decision: NO stock photos)
+- Aesthetics service list (services.html — comment marks the slot)
+- Pricing stance; Instagram/Facebook links (social anchors were removed as
+  dead — restore markers are comments in each footer)
+- Web3Forms access key — before activating, verify hello@deblandeauwellness.com
+  actually receives mail (the old gmail address bounced 550; swept 2026-07-04)
 
 ## See also
 `README.md` — fuller file map, color/content checklist, and embed instructions.
