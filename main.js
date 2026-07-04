@@ -16,23 +16,25 @@
     const toggle = document.querySelector('.nav-toggle');
     const mobileNav = document.querySelector('.nav-mobile');
     if (!toggle || !mobileNav) return;
+    toggle.setAttribute('aria-expanded', 'false');
+    function closeNav() {
+      mobileNav.classList.remove('open');
+      toggle.classList.remove('active');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
     toggle.addEventListener('click', function () {
       const isOpen = mobileNav.classList.toggle('open');
       toggle.classList.toggle('active', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
     mobileNav.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        mobileNav.classList.remove('open');
-        toggle.classList.remove('active');
-        document.body.style.overflow = '';
-      });
+      link.addEventListener('click', closeNav);
     });
     document.addEventListener('click', function (e) {
       if (!mobileNav.contains(e.target) && !toggle.contains(e.target)) {
-        mobileNav.classList.remove('open');
-        toggle.classList.remove('active');
-        document.body.style.overflow = '';
+        closeNav();
       }
     });
   }
@@ -60,8 +62,16 @@
       if (!question || !answer) return;
       question.addEventListener('click', function () {
         const isOpen = item.classList.contains('open');
-        items.forEach(function (el) { el.classList.remove('open'); const a = el.querySelector('.faq-answer'); if (a) a.style.maxHeight = null; });
-        if (!isOpen) { item.classList.add('open'); answer.style.maxHeight = answer.scrollHeight + 'px'; }
+        items.forEach(function (el) {
+          el.classList.remove('open');
+          const a = el.querySelector('.faq-answer'); if (a) a.style.maxHeight = null;
+          const q = el.querySelector('.faq-question'); if (q) q.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          question.setAttribute('aria-expanded', 'true');
+        }
       });
     });
   }
