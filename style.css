@@ -180,7 +180,7 @@ h4, h5, h6    { font-family: var(--font-body); font-weight: 500; }
 }
 .nav-logo {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline; /* svg baseline = its bottom edge; logo-text baseline = EBLANDEAU's */
   gap: 0;
   line-height: 1;
 }
@@ -189,12 +189,14 @@ h4, h5, h6    { font-family: var(--font-body); font-weight: 500; }
   height: 48px;
   flex-shrink: 0;
   margin-right: -0.35rem; /* D glyph stops short of its viewBox edge; pull EBLANDEAU flush */
+  position: relative;
+  top: 10px; /* D glyph baseline sits (13/64)·height above the svg bottom edge */
   transform-origin: center;
   transition: transform var(--transition-fast);
 }
 .nav-logo:hover .logo-mark { transform: scale(1.15); }
 .logo-text { display: inline-flex; flex-direction: column; }
-.footer-brand .logo-mark { width: 56px; height: 56px; }
+.footer-brand .logo-mark { width: 56px; height: 56px; top: 11px; }
 .logo-name {
   font-family: var(--font-display);
   font-size: 1.5rem;
