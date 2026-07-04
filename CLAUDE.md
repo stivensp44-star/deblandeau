@@ -13,7 +13,7 @@ Project instructions for Claude Code. Read this before every session.
 ## Live contact details (do not placeholder these again)
 - Address: 90 Chesterfield St, Hyde Park, MA 02136
 - Phone: (617) 433-7246  → `tel:+16174337246`
-- Email: deblandeaumed@gmail.com
+- Email: hello@deblandeauwellness.com
 
 ## Tech & deploy
 - Pure HTML / CSS / JS — zero frameworks. Flat file structure, all pages at root.
