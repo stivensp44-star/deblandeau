@@ -117,7 +117,7 @@ Both the **booking** (enquiry) and **contact** forms POST to Formspree via
 2. In `booking.html` AND `contact.html`, replace `REPLACE-WITH-FORMSPREE-ID`
    in the form `action` with the real form ID.
 Until then, the form shows a graceful "not connected — email/call us" message.
-Hidden `_subject` inputs label each form's email; `botcheck` honeypot retained.
+Hidden `_subject` inputs label each form's email; honeypot field is Formspree's `_gotcha`.
 
 ## Favicon
 `assets/favicon.svg` — brand monogram (navy tile + blue "D"). Linked in every `<head>`.

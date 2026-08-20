@@ -86,7 +86,7 @@ never re-derive or re-swap colors from it.
 ## Forms (booking.html + contact.html)
 - POST to Formspree via `fetch` in `main.js` (AJAX — user stays on the page);
   success check is Formspree's `data.ok`. Hidden `_subject` per form tells
-  enquiries apart. `botcheck` honeypot field retained.
+  enquiries apart. Honeypot field is Formspree's `_gotcha`.
 - **TO ACTIVATE:** replace `REPLACE-WITH-FORMSPREE-ID` in the form `action` of
   both files with the real Formspree form ID (https://formspree.io — same
   account pattern as refynme.com, but its OWN form endpoint, never RefynMe's).
