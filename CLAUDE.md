@@ -25,7 +25,7 @@ Project instructions for Claude Code. Read this before every session.
 - **Stylesheet cache-bust:** all 8 pages link `style.css?v=20260820b`. This is a
   manual version — **bump the date suffix on every `style.css` change** (across
   all pages) so the CDN serves fresh CSS. `main.js` and `assets/favicon.svg`
-  are versioned the same way (currently `?v=20260820` / `?v=20260820`).
+  are versioned the same way (currently `?v=20260820b` / `?v=20260820`).
 - HTML pages are NOT versioned — if a user reports stale content that the repo
   and live server both show as correct, it's their browser cache (Ctrl+F5).
 
@@ -84,10 +84,17 @@ never re-derive or re-swap colors from it.
   recreated mark as a straight swap.
 
 ## Forms (booking.html + contact.html)
-- POST to Web3Forms via `fetch` in `main.js`; honeypot field `botcheck` for spam.
-- **TO ACTIVATE:** replace `REPLACE-WITH-WEB3FORMS-ACCESS-KEY` in both files with a
-  real key from https://web3forms.com. Until then forms show a graceful
-  "email/call us" message.
+- POST to Formspree via `fetch` in `main.js` (AJAX — user stays on the page);
+  success check is Formspree's `data.ok`. Hidden `_subject` per form tells
+  enquiries apart. `botcheck` honeypot field retained.
+- **TO ACTIVATE:** replace `REPLACE-WITH-FORMSPREE-ID` in the form `action` of
+  both files with the real Formspree form ID (https://formspree.io — same
+  account pattern as refynme.com, but its OWN form endpoint, never RefynMe's).
+  Until then the main.js guard shows a graceful "email/call us" message.
+- booking.html is an ENQUIRY page (reframed 2026-08-20, FIX 12) — it does NOT
+  book appointments. Real scheduling = future HIPAA-compliant platform in
+  `#booking-embed-slot`; site-wide "Book a Consultation" CTAs get repointed
+  only when that platform is live.
 
 ## Pending from Daphnee (slots cleaned 2026-07-04 — no visible placeholders)
 - About bio (3 paragraphs) + credential tags (empty tags were deleted; restore
@@ -101,8 +108,9 @@ never re-derive or re-swap colors from it.
 - Aesthetics service list (services.html — comment marks the slot)
 - Pricing stance; Instagram/Facebook links (social anchors were removed as
   dead — restore markers are comments in each footer)
-- Web3Forms access key — before activating, verify hello@deblandeauwellness.com
-  actually receives mail (the old gmail address bounced 550; swept 2026-07-04)
+- Formspree form ID — before activating, verify hello@deblandeauwellness.com
+  actually receives mail (the old gmail address bounced 550; swept 2026-07-04);
+  after wiring, live-test BOTH forms and confirm receipt before calling it done
 
 ## See also
 `README.md` — fuller file map, color/content checklist, and embed instructions.

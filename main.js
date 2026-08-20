@@ -104,10 +104,9 @@
 
         const formData = new FormData(form);
         const endpoint = form.getAttribute('action');
-        const key = formData.get('access_key');
 
-        // If no real endpoint/key is configured yet, fail gracefully with guidance.
-        if (!endpoint || !key || key.indexOf('REPLACE') !== -1) {
+        // If no real endpoint is configured yet, fail gracefully with guidance.
+        if (!endpoint || endpoint.indexOf('REPLACE') !== -1) {
           showMessage('Form is not connected yet. Please email hello@deblandeauwellness.com or call us directly.', false);
           btn.innerHTML = defaultLabel; btn.disabled = false;
           return;
@@ -120,7 +119,7 @@
         })
           .then(function (res) { return res.json(); })
           .then(function (data) {
-            if (data.success) {
+            if (data.ok) {
               btn.textContent = 'Sent ✓';
               showMessage('Thank you! Daphnee will be in touch within one business day.', true);
               form.reset();

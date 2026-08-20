@@ -56,8 +56,8 @@
         <div class="reveal">
           <p class="eyebrow" style="margin-bottom: 1rem;">Send a Message</p>
           <h2 id="contact-heading" style="font-size: var(--fs-h3); font-family: var(--font-display); font-weight: 300; margin-bottom: 2rem; line-height: 1.2;">We'll get back to you within <em style="font-style:italic;color:var(--accent-ink);">one business day.</em></h2>
-          <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate aria-label="Contact form">
-            <input type="hidden" name="access_key" value="REPLACE-WITH-WEB3FORMS-ACCESS-KEY" />
+          <form class="contact-form" action="https://formspree.io/f/REPLACE-WITH-FORMSPREE-ID" method="POST" novalidate aria-label="Contact form">
+            <input type="hidden" name="_subject" value="New contact message — Deblandeau" />
             <input type="hidden" name="subject" value="New contact message — Deblandeau" />
             <input type="hidden" name="from_name" value="Deblandeau Website" />
             <input type="checkbox" name="botcheck" class="sr-only" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
@@ -100,7 +100,7 @@
   </footer>
   <div class="mobile-book-bar"><a href="booking.html" class="btn-primary">Book a Consultation <span class="arrow" aria-hidden="true">→</span></a></div>
 
-  <script src="main.js?v=20260820"></script>
+  <script src="main.js?v=20260820b"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

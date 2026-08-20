@@ -109,14 +109,15 @@ Current palette is **Natural Wellness Luxury** (client rebrand June 17, 2026;
 
 ---
 
-## Forms — Live Submission (Web3Forms)
-Both the **booking** and **contact** forms POST to Web3Forms via `fetch` in `main.js`.
-To activate (one step):
-1. Get a free access key at https://web3forms.com (enter the destination email).
-2. In `booking.html` AND `contact.html`, replace `REPLACE-WITH-WEB3FORMS-ACCESS-KEY`
-   in `<input type="hidden" name="access_key" …>` with the real key.
+## Forms — Live Submission (Formspree)
+Both the **booking** (enquiry) and **contact** forms POST to Formspree via
+`fetch` in `main.js` (AJAX; success = `data.ok`). To activate (one step):
+1. Create a form at https://formspree.io with hello@deblandeauwellness.com
+   as the destination.
+2. In `booking.html` AND `contact.html`, replace `REPLACE-WITH-FORMSPREE-ID`
+   in the form `action` with the real form ID.
 Until then, the form shows a graceful "not connected — email/call us" message.
-A hidden `botcheck` honeypot field is included for spam protection.
+Hidden `_subject` inputs label each form's email; `botcheck` honeypot retained.
 
 ## Favicon
 `assets/favicon.svg` — brand monogram (navy tile + blue "D"). Linked in every `<head>`.
