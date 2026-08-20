@@ -2,7 +2,7 @@
 
 ## Client
 **Deblandeau Medical Aesthetic and Wellness, PLLC**
-Provider: **Daphnee Matthew, NP** — Medical Weight Loss & Aesthetics
+Provider: **Daphne Matthews, NP** — Medical Weight Loss & Aesthetics
 Near Boston, MA (town TBD)
 > Use the FULL legal name "Deblandeau Medical Aesthetic and Wellness, PLLC" (with comma) in titles, footers, schema, and legal text.
 Built by: Pierre Louis Ent LLC (Stivo)
@@ -61,7 +61,7 @@ Current palette is **Natural Wellness Luxury** (client rebrand June 17, 2026;
 --accent-rgb:   212, 175, 55   (for rgba() alpha shadows/borders)
 --dark-rgb:     44, 47, 51      (for rgba() alpha overlays)
 ```
-⚠️ TO SWAP COLORS WHEN DAPHNEE DELIVERS: Change values in `:root` in `style.css` ONLY.
+⚠️ TO SWAP COLORS WHEN DAPHNE DELIVERS: Change values in `:root` in `style.css` ONLY.
 ⚠️ For any translucent shadow/border/overlay, use `rgba(var(--accent-rgb), …)` or `rgba(var(--dark-rgb), …)` — never hardcode hex/rgb.
 
 ## Typography
@@ -76,7 +76,7 @@ Current palette is **Natural Wellness Luxury** (client rebrand June 17, 2026;
 |------|---------|
 | `index.html` | Homepage — hero, services, about teaser, testimonials, CTA |
 | `services.html` | Full service menu — weight loss, injectables, aesthetics |
-| `about.html` | Daphnee's story, credentials, philosophy |
+| `about.html` | Daphne's story, credentials, philosophy |
 | `faq.html` | FAQ accordion — general, weight loss, injectables, appointments |
 | `booking.html` | Appointment request form (swap with booking embed when ready) |
 | `contact.html` | Contact form + location + hours + map placeholder |
@@ -88,7 +88,7 @@ Current palette is **Natural Wellness Luxury** (client rebrand June 17, 2026;
 
 ---
 
-## Content Waiting on Daphnee
+## Content Waiting on Daphne
 
 | Item | Where It Goes |
 |------|---------------|
@@ -127,7 +127,7 @@ Swap with a real logo mark when available.
 Loaded via `<link rel="preload"/stylesheet">` in each page `<head>` (NOT `@import` in CSS)
 for faster, non-render-blocking delivery. Keep all heads in sync.
 
-## Booking System — When Daphnee Decides (optional upgrade)
+## Booking System — When Daphne Decides (optional upgrade)
 To replace the form with a full scheduler: `booking.html` → `<div id="booking-embed-slot">` → swap the form for the embed.
 Options: Jane App / Square Appointments / Vagaro / Calendly.
 
@@ -154,7 +154,7 @@ git push origin main
 ---
 
 ## Open Priority Queue
-1. Get Daphnee's content (town, address, phone, bio, photos)
+1. Get Daphne's content (town, address, phone, bio, photos)
 2. Swap CSS colors when she confirms palette
 3. Replace contact form endpoint with real handler
 4. Add Google Maps embed when address confirmed

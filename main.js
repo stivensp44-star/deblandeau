@@ -121,7 +121,7 @@
           .then(function (data) {
             if (data.ok) {
               btn.textContent = 'Sent ✓';
-              showMessage('Thank you! Daphnee will be in touch within one business day.', true);
+              showMessage('Thank you! Daphne will be in touch within one business day.', true);
               form.reset();
               setTimeout(function () { btn.innerHTML = defaultLabel; btn.disabled = false; if (message) message.style.display = 'none'; }, 6000);
             } else {
