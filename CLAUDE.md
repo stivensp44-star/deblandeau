@@ -3,9 +3,9 @@
 Project instructions for Claude Code. Read this before every session.
 
 ## Business
-**Deblandeau Medical Aesthetic and Wellness, PLLC** — NP-owned medical weight loss
+**DeBlandeau Medical Aesthetic and Wellness, PLLC** — NP-owned medical weight loss
 & aesthetics. Provider: **Daphne Matthews, NP**. Near Boston, MA.
-- Always use the FULL legal name **with the comma**: "Deblandeau Medical Aesthetic and Wellness, PLLC"
+- Always use the FULL legal name **with the comma**: "DeBlandeau Medical Aesthetic and Wellness, PLLC"
   in titles, footers, copyright, schema, and legal text.
 - Live URL: https://deblandeau.com
 - Repo: https://github.com/stivensp44-star/deblandeau (branch: `main`)
@@ -25,7 +25,7 @@ Project instructions for Claude Code. Read this before every session.
 - **Stylesheet cache-bust:** all 8 pages link `style.css?v=20260820b`. This is a
   manual version — **bump the date suffix on every `style.css` change** (across
   all pages) so the CDN serves fresh CSS. `main.js` and `assets/favicon.svg`
-  are versioned the same way (currently `?v=20260820c` / `?v=20260820`).
+  are versioned the same way (currently `?v=20260820c` / `?v=20260820b`).
 - HTML pages are NOT versioned — if a user reports stale content that the repo
   and live server both show as correct, it's their browser cache (Ctrl+F5).
 

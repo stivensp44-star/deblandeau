@@ -1,10 +1,10 @@
 # deblandeau.com — Project README
 
 ## Client
-**Deblandeau Medical Aesthetic and Wellness, PLLC**
+**DeBlandeau Medical Aesthetic and Wellness, PLLC**
 Provider: **Daphne Matthews, NP** — Medical Weight Loss & Aesthetics
 Near Boston, MA (town TBD)
-> Use the FULL legal name "Deblandeau Medical Aesthetic and Wellness, PLLC" (with comma) in titles, footers, schema, and legal text.
+> Use the FULL legal name "DeBlandeau Medical Aesthetic and Wellness, PLLC" (with comma) in titles, footers, schema, and legal text.
 Built by: Pierre Louis Ent LLC (Stivo)
 
 ## Live URL
