@@ -86,7 +86,8 @@
 .service-card-overlay, .nav-mobile, .about-quote-badge { --accent-text: var(--accent); }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: clip; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html, body { overflow-x: clip; }
 img, video { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 ul, ol { list-style: none; }
@@ -472,7 +473,7 @@ textarea.form-control { resize: vertical; min-height: 130px; }
 }
 @media (max-width: 768px) {
   .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-left { padding: 9rem 1.5rem 4rem; min-height: 90vh; }
+  .hero-left { padding: 9rem 1.5rem 4rem; min-height: 90vh; min-height: 90svh; }
   .hero-left::after { display: none; }
   .hero-right { aspect-ratio: 4/3; }
   .hero-right::after { display: none; }
@@ -494,6 +495,7 @@ textarea.form-control { resize: vertical; min-height: 130px; }
   .faq-layout, .booking-layout, .contact-layout,
   .about-bio-layout, .about-values-layout { grid-template-columns: 1fr; }
   .about-quote-badge { left: 1rem; }
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
 @media (max-width: 768px) {
   .mobile-book-bar {
