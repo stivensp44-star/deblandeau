@@ -47,16 +47,18 @@ Current palette is **Natural Wellness Luxury** (client rebrand June 17, 2026;
 --surface:      #FFFFFF   White card backgrounds
 --dark:         #2C2F33   Charcoal (primary dark)
 --dark-light:   #3D4147   Charcoal, lighter (hover/cards)
---accent:       #C9A66A   Brushed Gold (CTA, highlights)
---accent-soft:  rgba(201,166,106,0.12)   Gold tint wash
+--accent:       #D4AF37   Bright Gold (CTA bgs, gold-on-dark; revalued 2026-08-20)
+--accent-soft:  rgba(var(--accent-rgb),0.12)   Gold tint wash
 --accent-deep:  #8FA18F   Sage Leaf (hover states)
+--accent-ink:   #8C6522   Bronze Gold — gold TEXT on light backgrounds (4.71:1 on --bg)
+--accent-text:  var(--accent-ink)   Cascading gold-text token; dark containers flip it to --accent
 --text:         #2C2F33   Charcoal body text
 --text-muted:   #56595D   Secondary text (Charcoal +42/channel; 6.31:1 on --bg)
 --text-light:   #FFFFFF   (defined, currently unused)
 --white:        #FFFFFF
 --border:       #E4DDD3   Light Taupe borders
 --taupe:        #B9AA97   Taupe — decorative/border use ONLY, never body text
---accent-rgb:   201, 166, 106   (for rgba() alpha shadows/borders)
+--accent-rgb:   212, 175, 55   (for rgba() alpha shadows/borders)
 --dark-rgb:     44, 47, 51      (for rgba() alpha overlays)
 ```
 ⚠️ TO SWAP COLORS WHEN DAPHNEE DELIVERS: Change values in `:root` in `style.css` ONLY.
