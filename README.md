@@ -40,21 +40,24 @@ https://deblandeau.com
 ---
 
 ## Color System (CSS Variables — DO NOT HARDCODE)
-Current palette is **Clinical Navy/Blue** (matches the live build).
+Current palette is **Natural Wellness Luxury** (client rebrand June 17, 2026;
+`--text-muted` revalued Aug 20, 2026 for WCAG AA contrast — see style.css header).
 ```
---bg:           #FAF8F5   Warm off-white background
---surface:      #F2EDE6   Parchment card backgrounds
---dark:         #1B3A6B   Deep clinical navy (primary dark)
---dark-light:   #244D8A   Lighter navy for hover/cards
---accent:       #2B6CB0   Clinical blue (CTA, highlights)
---accent-soft:  #C8D9F0   Light blue wash
---accent-deep:  #1A4F8A   Deep blue for hover states
---text:         #0F1A2E   Near-black body text
---text-muted:   #3D4A5C   Secondary/subdued text
---text-light:   #5A6A82   Tertiary text / placeholders
+--bg:           #F6F2EC   Warm Ivory background
+--surface:      #FFFFFF   White card backgrounds
+--dark:         #2C2F33   Charcoal (primary dark)
+--dark-light:   #3D4147   Charcoal, lighter (hover/cards)
+--accent:       #C9A66A   Brushed Gold (CTA, highlights)
+--accent-soft:  rgba(201,166,106,0.12)   Gold tint wash
+--accent-deep:  #8FA18F   Sage Leaf (hover states)
+--text:         #2C2F33   Charcoal body text
+--text-muted:   #56595D   Secondary text (Charcoal +42/channel; 6.31:1 on --bg)
+--text-light:   #FFFFFF   (defined, currently unused)
 --white:        #FFFFFF
---accent-rgb:   43, 108, 176   (for rgba() alpha shadows/borders)
---dark-rgb:     27, 58, 107    (for rgba() alpha overlays)
+--border:       #E4DDD3   Light Taupe borders
+--taupe:        #B9AA97   Taupe — decorative/border use ONLY, never body text
+--accent-rgb:   201, 166, 106   (for rgba() alpha shadows/borders)
+--dark-rgb:     44, 47, 51      (for rgba() alpha overlays)
 ```
 ⚠️ TO SWAP COLORS WHEN DAPHNEE DELIVERS: Change values in `:root` in `style.css` ONLY.
 ⚠️ For any translucent shadow/border/overlay, use `rgba(var(--accent-rgb), …)` or `rgba(var(--dark-rgb), …)` — never hardcode hex/rgb.

@@ -25,6 +25,16 @@
    --dark-rgb    was: 27,58,107              -> 44,47,51
 */
 
+/* REVALUED Aug 20, 2026 — WCAG AA contrast repair (owner-approved fix-by-fix):
+   --text-muted  was: #B9AA97 (Taupe, 2.03:1 on --bg) -> #56595D
+     (Charcoal #2C2F33 +42/channel, offsets preserved; 6.31:1 on --bg,
+      7.04:1 on --surface)
+   Taupe #B9AA97 stays in the palette as --taupe (borders/decorative only —
+   never body text).
+   .btn-primary / .btn-primary:hover / .btn-outline:hover text: --white ->
+   --dark (5.86:1 on gold, 4.91:1 on sage hover; was 2.30:1 / 2.74:1).
+*/
+
 /* Fonts are loaded via <link rel="preload"/stylesheet"> in each page <head>
    for faster, non-render-blocking delivery. Do not re-add @import here. */
 
@@ -38,10 +48,11 @@
   --accent-soft: rgba(201, 166, 106, 0.12);
   --accent-deep: #8FA18F;
   --text: #2C2F33;
-  --text-muted: #B9AA97;
+  --text-muted: #56595D;
   --text-light: #FFFFFF;
   --white: #FFFFFF;
   --border: #E4DDD3;
+  --taupe: #B9AA97;
   --shadow: rgba(44, 47, 51, 0.08);
   --accent-rgb: 201, 166, 106;
   --dark-rgb: 44, 47, 51;
@@ -112,7 +123,7 @@ h4, h5, h6    { font-family: var(--font-body); font-weight: 500; }
   gap: 0.6rem;
   padding: 0.9rem 2rem;
   background: var(--accent);
-  color: var(--white);
+  color: var(--dark);
   font-family: var(--font-body);
   font-size: var(--fs-small);
   font-weight: 600;
@@ -123,7 +134,7 @@ h4, h5, h6    { font-family: var(--font-body); font-weight: 500; }
 }
 .btn-primary:hover {
   background: var(--accent-deep);
-  color: var(--white);
+  color: var(--dark);
   transform: translateY(-1px);
   box-shadow: 0 8px 24px rgba(var(--accent-rgb), 0.32);
 }
@@ -146,7 +157,7 @@ h4, h5, h6    { font-family: var(--font-body); font-weight: 500; }
   border-radius: 2px;
   transition: all var(--transition-fast);
 }
-.btn-outline:hover { background: var(--accent); color: var(--white); }
+.btn-outline:hover { background: var(--accent); color: var(--dark); }
 
 .btn-ghost {
   display: inline-flex;

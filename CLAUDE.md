@@ -22,7 +22,7 @@ Project instructions for Claude Code. Read this before every session.
 - Hostinger CDN: hPanel "purge" is unreliable for edge cache. If a CSS/JS/asset
   change doesn't appear, bump a versioned URL (e.g. `?v=YYYYMMDD`) rather than
   trusting a purge.
-- **Stylesheet cache-bust:** all 8 pages link `style.css?v=20260704e`. This is a
+- **Stylesheet cache-bust:** all 8 pages link `style.css?v=20260820`. This is a
   manual version — **bump the date suffix on every `style.css` change** (across
   all pages) so the CDN serves fresh CSS. `main.js` and `assets/favicon.svg`
   are versioned the same way (currently `?v=20260704` / `?v=20260704b`).
@@ -45,10 +45,16 @@ Updated June 17, 2026 — client-approved color rebrand. Real token names below
 --dark #2C2F33 (Charcoal)   --dark-light #3D4147 (Charcoal, lighter)
 --accent #C9A66A (Brushed Gold)   --accent-soft rgba(201,166,106,0.12) (Gold tint)
 --accent-deep #8FA18F (Sage Leaf)
---text #2C2F33 (Charcoal)   --text-muted #B9AA97 (Taupe)   --text-light #FFFFFF
---border #E4DDD3 (Light Taupe)   --shadow rgba(44,47,51,0.08)
---accent-rgb 201,166,106   --dark-rgb 44,47,51
+--text #2C2F33 (Charcoal)   --text-muted #56595D (Charcoal +42/channel)   --text-light #FFFFFF (unused)
+--border #E4DDD3 (Light Taupe)   --taupe #B9AA97 (Taupe — decorative/border only, never text)
+--shadow rgba(44,47,51,0.08)   --accent-rgb 201,166,106   --dark-rgb 44,47,51
 ```
+Contrast repair 2026-08-20 (owner-approved): `--text-muted` revalued Taupe→#56595D
+(Taupe was 2.03:1 on --bg; #56595D is 6.31:1 on --bg / 7.04:1 on --surface, WCAG AA).
+Taupe stays in the palette as `--taupe` for decorative/border use — never body text.
+Button text on gold/sage (`.btn-primary`, its hover, `.btn-outline:hover`) is
+`var(--dark)`, not white (white on gold was 2.30:1). The five brand-board swatches
+themselves are unchanged.
 Typography: Cormorant Garamond (display) + Inter (body), loaded via
 `<link rel="preload"/stylesheet">` in each `<head>` — NOT `@import` in CSS.
 
