@@ -5,8 +5,10 @@
     const navbar = document.querySelector('.navbar');
     if (!navbar) return;
     function updateNav() {
-      if (window.scrollY > 60) { navbar.classList.add('scrolled'); navbar.classList.remove('light'); }
-      else { navbar.classList.remove('scrolled'); navbar.classList.add('light'); }
+      // Hysteresis: iOS address-bar jitter must not re-trigger the swap.
+      // > 80 = scrolled on, < 40 = scrolled off, 40-80 = keep current state.
+      if (window.scrollY > 80) { navbar.classList.add('scrolled'); navbar.classList.remove('light'); }
+      else if (window.scrollY < 40) { navbar.classList.remove('scrolled'); navbar.classList.add('light'); }
     }
     window.addEventListener('scroll', updateNav, { passive: true });
     updateNav();

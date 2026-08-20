@@ -25,7 +25,7 @@ Project instructions for Claude Code. Read this before every session.
 - **Stylesheet cache-bust:** all 8 pages link `style.css?v=20260820b`. This is a
   manual version — **bump the date suffix on every `style.css` change** (across
   all pages) so the CDN serves fresh CSS. `main.js` and `assets/favicon.svg`
-  are versioned the same way (currently `?v=20260704` / `?v=20260820`).
+  are versioned the same way (currently `?v=20260820` / `?v=20260820`).
 - HTML pages are NOT versioned — if a user reports stale content that the repo
   and live server both show as correct, it's their browser cache (Ctrl+F5).
 
