@@ -89,7 +89,8 @@ never re-derive or re-swap colors from it.
   enquiries apart. Honeypot field is Formspree's `_gotcha`.
 - **LIVE endpoint: `https://formspree.io/f/xzepodjv`** — both form `action`s
   (booking.html + contact.html), FIX 18 2026-08-21. Supersedes `xykqvdaw`,
-  which is a DIFFERENT form in the same Formspree account — never reuse it.
+  which is YEV's LIVE event-submission form in the same Formspree account
+  ("A New Form" in the dashboard, pending rename to "YEV") — never reuse it.
   Same account pattern as refynme.com, but its OWN form endpoint, never
   RefynMe's. Notifications currently route to **stivensp44@gmail.com
   (TEMP)** pending the client destination swap to deblandeaumed@gmail.com —
