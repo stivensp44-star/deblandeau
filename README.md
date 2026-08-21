@@ -111,12 +111,12 @@ Current palette is **Natural Wellness Luxury** (client rebrand June 17, 2026;
 
 ## Forms — Live Submission (Formspree)
 Both the **booking** (enquiry) and **contact** forms POST to Formspree via
-`fetch` in `main.js` (AJAX; success = `data.ok`). To activate (one step):
-1. Create a form at https://formspree.io with deblandeaumed@gmail.com
-   as the destination.
-2. In `booking.html` AND `contact.html`, replace `REPLACE-WITH-FORMSPREE-ID`
-   in the form `action` with the real form ID.
-Until then, the form shows a graceful "not connected — email/call us" message.
+`fetch` in `main.js` (AJAX; success = `data.ok`). **LIVE endpoint:
+`https://formspree.io/f/xzepodjv`** — wired in both `booking.html` and
+`contact.html` form `action`s. Notifications currently route to
+stivensp44@gmail.com (TEMP) pending the client destination swap to
+deblandeaumed@gmail.com — a Formspree dashboard change, not code. If the
+endpoint is unreachable, the form shows a graceful "email/call us" message.
 Hidden `_subject` inputs label each form's email; honeypot field is Formspree's `_gotcha`.
 
 ## Favicon

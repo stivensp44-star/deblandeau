@@ -87,10 +87,15 @@ never re-derive or re-swap colors from it.
 - POST to Formspree via `fetch` in `main.js` (AJAX — user stays on the page);
   success check is Formspree's `data.ok`. Hidden `_subject` per form tells
   enquiries apart. Honeypot field is Formspree's `_gotcha`.
-- **TO ACTIVATE:** replace `REPLACE-WITH-FORMSPREE-ID` in the form `action` of
-  both files with the real Formspree form ID (https://formspree.io — same
-  account pattern as refynme.com, but its OWN form endpoint, never RefynMe's).
-  Until then the main.js guard shows a graceful "email/call us" message.
+- **LIVE endpoint: `https://formspree.io/f/xzepodjv`** — both form `action`s
+  (booking.html + contact.html), FIX 18 2026-08-21. Supersedes `xykqvdaw`,
+  which is a DIFFERENT form in the same Formspree account — never reuse it.
+  Same account pattern as refynme.com, but its OWN form endpoint, never
+  RefynMe's. Notifications currently route to **stivensp44@gmail.com
+  (TEMP)** pending the client destination swap to deblandeaumed@gmail.com —
+  that swap happens in the Formspree DASHBOARD, not code. If the endpoint
+  is unreachable, the main.js guard shows a graceful "email/call us"
+  message.
 - booking.html is an ENQUIRY page (reframed 2026-08-20, FIX 12) — it does NOT
   book appointments. Real scheduling = future HIPAA-compliant platform in
   `#booking-embed-slot`; site-wide "Book a Consultation" CTAs get repointed
@@ -108,9 +113,12 @@ never re-derive or re-swap colors from it.
 - Aesthetics service list (services.html — comment marks the slot)
 - Pricing stance; Instagram/Facebook links (social anchors were removed as
   dead — restore markers are comments in each footer)
-- Formspree form ID — before activating, verify deblandeaumed@gmail.com
-  actually receives mail (the old gmail address bounced 550; swept 2026-07-04);
-  after wiring, live-test BOTH forms and confirm receipt before calling it done
+- Formspree destination swap — notifications currently go to
+  stivensp44@gmail.com (TEMP); switch the `xzepodjv` form's destination to
+  deblandeaumed@gmail.com in the Formspree dashboard AFTER verifying that
+  address actually receives mail (a previous gmail address bounced 550;
+  swept 2026-07-04) — then live-test BOTH forms on the new endpoint and
+  confirm receipt before calling it done
 
 ## See also
 `README.md` — fuller file map, color/content checklist, and embed instructions.
