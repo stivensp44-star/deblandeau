@@ -112,7 +112,7 @@ Current palette is **Natural Wellness Luxury** (client rebrand June 17, 2026;
 ## Forms — Live Submission (Formspree)
 Both the **booking** (enquiry) and **contact** forms POST to Formspree via
 `fetch` in `main.js` (AJAX; success = `data.ok`). To activate (one step):
-1. Create a form at https://formspree.io with hello@deblandeauwellness.com
+1. Create a form at https://formspree.io with deblandeaumed@gmail.com
    as the destination.
 2. In `booking.html` AND `contact.html`, replace `REPLACE-WITH-FORMSPREE-ID`
    in the form `action` with the real form ID.

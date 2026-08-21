@@ -107,7 +107,7 @@
 
         // If no real endpoint is configured yet, fail gracefully with guidance.
         if (!endpoint || endpoint.indexOf('REPLACE') !== -1) {
-          showMessage('Form is not connected yet. Please email hello@deblandeauwellness.com or call us directly.', false);
+          showMessage('Form is not connected yet. Please email deblandeaumed@gmail.com or call us directly.', false);
           btn.innerHTML = defaultLabel; btn.disabled = false;
           return;
         }
@@ -129,7 +129,7 @@
             }
           })
           .catch(function () {
-            showMessage('Something went wrong. Please email hello@deblandeauwellness.com or try again.', false);
+            showMessage('Something went wrong. Please email deblandeaumed@gmail.com or try again.', false);
             btn.innerHTML = defaultLabel; btn.disabled = false;
           });
       });

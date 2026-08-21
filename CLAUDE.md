@@ -13,7 +13,7 @@ Project instructions for Claude Code. Read this before every session.
 ## Live contact details (do not placeholder these again)
 - Address: 90 Chesterfield St, Hyde Park, MA 02136
 - Phone: (617) 433-7246  → `tel:+16174337246`
-- Email: hello@deblandeauwellness.com
+- Email: deblandeaumed@gmail.com
 
 ## Tech & deploy
 - Pure HTML / CSS / JS — zero frameworks. Flat file structure, all pages at root.
@@ -108,7 +108,7 @@ never re-derive or re-swap colors from it.
 - Aesthetics service list (services.html — comment marks the slot)
 - Pricing stance; Instagram/Facebook links (social anchors were removed as
   dead — restore markers are comments in each footer)
-- Formspree form ID — before activating, verify hello@deblandeauwellness.com
+- Formspree form ID — before activating, verify deblandeaumed@gmail.com
   actually receives mail (the old gmail address bounced 550; swept 2026-07-04);
   after wiring, live-test BOTH forms and confirm receipt before calling it done
 
