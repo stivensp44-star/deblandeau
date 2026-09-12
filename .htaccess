@@ -1,0 +1,4 @@
+# Block public access to Markdown docs (internal build files)
+<FilesMatch "\.md$">
+    Require all denied
+</FilesMatch>
