@@ -494,6 +494,7 @@ textarea.form-control { resize: vertical; min-height: 130px; }
   .form-row { grid-template-columns: 1fr; }
   .faq-layout, .booking-layout, .contact-layout,
   .about-bio-layout, .about-values-layout { grid-template-columns: 1fr; }
+  .faq-layout > div:first-child { position: static !important; }
   .about-quote-badge { left: 1rem; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
