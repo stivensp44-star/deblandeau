@@ -22,7 +22,7 @@ Project instructions for Claude Code. Read this before every session.
 - Hostinger CDN: hPanel "purge" is unreliable for edge cache. If a CSS/JS/asset
   change doesn't appear, bump a versioned URL (e.g. `?v=YYYYMMDD`) rather than
   trusting a purge.
-- **Stylesheet cache-bust:** all 8 pages link `style.css?v=20260820b`. This is a
+- **Stylesheet cache-bust:** all 8 pages link `style.css?v=20260912`. This is a
   manual version — **bump the date suffix on every `style.css` change** (across
   all pages) so the CDN serves fresh CSS. `main.js` and `assets/favicon.svg`
   are versioned the same way (currently `?v=20260820c` / `?v=20260820b`).
