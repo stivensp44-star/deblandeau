@@ -11,7 +11,10 @@ Project instructions for Claude Code. Read this before every session.
 - Repo: https://github.com/stivensp44-star/deblandeau (branch: `main`)
 
 ## Live contact details (do not placeholder these again)
-- Address: 90 Chesterfield St, Hyde Park, MA 02136
+- Address: Boston, MA — city-only, site-wide (street address withheld until a
+  definitive location is set; client request, Sep 2026). The contact.html map
+  iframe is removed with a restore-marker comment; restore map + full address
+  everywhere only on the client's confirmed address.
 - Phone: (617) 433-7246  → `tel:+16174337246`
 - Email: deblandeaumed@gmail.com
 
