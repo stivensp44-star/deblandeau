@@ -15,7 +15,7 @@ Project instructions for Claude Code. Read this before every session.
   definitive location is set; client request, Sep 2026). The contact.html map
   iframe is removed with a restore-marker comment; restore map + full address
   everywhere only on the client's confirmed address.
-- Phone: (617) 433-7246  → `tel:+16174337246`
+- Phone: (857) 379-4287  → `tel:+18573794287`
 - Email: deblandeaumed@gmail.com
 
 ## Tech & deploy
