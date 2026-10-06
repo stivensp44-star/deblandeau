@@ -100,10 +100,14 @@ never re-derive or re-swap colors from it.
   that swap happens in the Formspree DASHBOARD, not code. If the endpoint
   is unreachable, the main.js guard shows a graceful "email/call us"
   message.
-- booking.html is an ENQUIRY page (reframed 2026-08-20, FIX 12) — it does NOT
-  book appointments. Real scheduling = future HIPAA-compliant platform in
-  `#booking-embed-slot`; site-wide "Book a Consultation" CTAs get repointed
-  only when that platform is live.
+- booking.html is an ENQUIRY page (reframed 2026-08-20, FIX 12) — its Formspree
+  form does NOT book appointments. **Zanda live Oct 2026 — all booking CTAs
+  repointed to Zanda appointment-booking.** All 36 `href="booking.html"` CTAs
+  across the 8 pages now open the Zanda client portal in a new tab
+  (`target="_blank" rel="noopener noreferrer"`); booking.html keeps the enquiry
+  form as a fallback and a "Book Online" link in `#booking-embed-slot`.
+  Consequence: booking.html now has NO inbound internal links — direct URL only.
+  The reachable enquiry path is contact.html, which is in every nav.
 
 ## Pending from Daphne (slots cleaned 2026-07-04 — no visible placeholders)
 - About bio (3 paragraphs) + credential tags (empty tags were deleted; restore
