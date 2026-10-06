@@ -1,6 +1,7 @@
 # CLAUDE.md — deblandeau.com
 
-Project instructions for Claude Code. Read this before every session.
+Project instructions for Claude Code. Read this IN FULL before every session,
+before touching any file. Every prompt must name the tier of every file it edits.
 
 ## Business
 **DeBlandeau Medical Aesthetic and Wellness, PLLC** — NP-owned medical weight loss
@@ -9,6 +10,7 @@ Project instructions for Claude Code. Read this before every session.
   in titles, footers, copyright, schema, and legal text.
 - Live URL: https://deblandeau.com
 - Repo: https://github.com/stivensp44-star/deblandeau (branch: `main`)
+- Local working copy: `C:\Users\Administrator\Documents\deblandeau`
 
 ## Live contact details (do not placeholder these again)
 - Address: Boston, MA — city-only, site-wide (street address withheld until a
@@ -17,6 +19,73 @@ Project instructions for Claude Code. Read this before every session.
   everywhere only on the client's confirmed address.
 - Phone: (857) 379-4287  → `tel:+18573794287`
 - Email: deblandeaumed@gmail.com
+
+---------------------------------------------------------------------------
+## LOCK ZONE  (read before every edit)
+---------------------------------------------------------------------------
+Nothing in the lock zone changes without Stivo's explicit, per-change approval
+naming the item. "Fix it" / "clean up" / "refactor" is NOT approval to touch it.
+If a task appears to require a lock-zone change: STOP, report, wait.
+
+### Tier 1 registry — hash-locked files
+Hashes are SHA-256 (first 16 hex chars) of the Windows working copy, recorded
+2026-10-06 at main @ e42cdb5. Check: PowerShell
+`(Get-FileHash <file> -Algorithm SHA256).Hash.Substring(0,16)`.
+A mismatch at session start = someone changed a locked file → STOP and report.
+When an approved Tier 1 change ships, update its hash here in the same commit.
+
+| File | SHA-256 (16) | Why it is locked |
+|---|---|---|
+| `main.js` | `769004AA88C5C19D` | Formspree AJAX submit + guard; nav/reveal logic |
+| `.htaccess` | `2190C3487F22748B` | Only copy (none server-side); blocks `*.md` from the web |
+| `assets/favicon.svg` | `8A48D1BE0E2F73E5` | Brand mark; hardcoded hexes are the one allowed exception |
+
+### Tier 1 — locked regions (verified by invariant counts, not hashes)
+| Region | Where | Invariant (must stay exactly) |
+|---|---|---|
+| `:root` palette block | style.css | SHA-256(16) of the `:root {…}` block = `606f0b91a4add5c4` |
+| Formspree forms | booking.html, contact.html | `xzepodjv` = 1 in each; 0 elsewhere; never `xykqvdaw` (YEV) |
+| Dropdown value | booking.html | `<option value="botox">Neuromodulators</option>` — intentional internal value, leave it |
+| Zanda booking links | all 8 pages | `appointment-booking` counts: index 6, services 8, about 6, faq 6, contact 4, booking 3, privacy 2, terms 2 (= 37) |
+| Logo lockup | all 8 pages | `class="logo-name"` = 14 total (2 per page, 1 on privacy/terms); text `eblandeau` is intentional |
+| Legal entity name | all 8 pages | exact string "DeBlandeau Medical Aesthetic and Wellness, PLLC" — never shortened/altered |
+| Cache stamps | all 8 pages | `style.css?v=20260912` ×8, `main.js?v=20260821` ×8, `favicon.svg?v=20260820b` ×16 |
+
+### Tier tables
+| Tier | Files | Rule |
+|---|---|---|
+| **1 — Locked** | everything in the two tables above | Explicit per-item approval; diff shown before commit; hash/invariant updated in same commit |
+| **2 — Guarded** | `style.css` (outside `:root`), page structure/markup of the 8 HTML pages, `CLAUDE.md` | Staging branch only; Stivo reviews diff before merge; style.css change ⇒ bump `?v=` on all 8 pages |
+| **3 — Content** | visible copy inside the 8 pages, `README.md`, `assets/images/` | Staging branch; content-only (no CSS, no endpoints, no structure); merge on Stivo's go |
+
+---------------------------------------------------------------------------
+## DOCTRINE
+---------------------------------------------------------------------------
+1. **Workflow:** Claude (chat) audits and writes the prompt → Claude Code executes
+   → independent verification against the LIVE site (curl / re-fetch) → Stivo
+   approves merge. Code's self-reported counts are never the proof; raw command
+   output is.
+2. **Branches:** every change goes to a named staging branch first. Merge to
+   `main` only on Stivo's explicit go (push to main = live deploy).
+3. **Gates:** every task ends with raw-output gates. Always include the lock-zone
+   invariants above. If ANY gate fails: STOP, do not merge, report — never edit a
+   locked item to make a gate pass.
+4. **One concern per task.** Content edits, infrastructure (forms, endpoints,
+   Zanda), and CSS are never bundled in one task.
+5. **Client decisions first.** Clinical claims, credentials, pricing, and
+   single-provider vs "team" wording are flagged to Daphne BEFORE building.
+6. **Anchors come from live pages,** freshly fetched — never from Drive copies.
+7. **Inline styles hide bugs** — when diagnosing layout, grep both style.css and
+   `style=""` attributes in the HTML.
+
+## Content rulings (standing)
+- **No injectable brand names anywhere on the site** (Sep 12, 2026 — trademark
+  concern): never "Botox", "Dysport", Juvéderm, etc. Use "Neuromodulators" /
+  "dermal fillers". Only exception: the internal `value="botox"` above.
+- Credential: site currently shows "FNP-C" (about.html credential tag,
+  index.html bio + tag) and "NP" in headings — FNP vs FNP-C still to be confirmed
+  against her license. Do not change either until Daphne confirms.
+- No stock photos (owner decision). No fake testimonials.
 
 ## Tech & deploy
 - Pure HTML / CSS / JS — zero frameworks. Flat file structure, all pages at root.
@@ -28,17 +97,20 @@ Project instructions for Claude Code. Read this before every session.
 - **Stylesheet cache-bust:** all 8 pages link `style.css?v=20260912`. This is a
   manual version — **bump the date suffix on every `style.css` change** (across
   all pages) so the CDN serves fresh CSS. `main.js` and `assets/favicon.svg`
-  are versioned the same way (currently `?v=20260820c` / `?v=20260820b`).
+  are versioned the same way (currently `?v=20260821` / `?v=20260820b`).
+  After any bump, update the Cache stamps invariant in the lock zone.
 - HTML pages are NOT versioned — if a user reports stale content that the repo
   and live server both show as correct, it's their browser cache (Ctrl+F5).
+- `.htaccess` (repo-managed, the only copy) denies `*.md`, so CLAUDE.md /
+  README.md return 403 publicly. http→https is platform-level (Hostinger).
 
 ## Iron build rules
 1. **CSS variables only** — never hardcode a color. All colors live in `:root`.
    For translucent shadows/borders/overlays use `rgba(var(--accent-rgb), …)` or
    `rgba(var(--dark-rgb), …)`.
 2. **GitHub is the source of truth.** Commit after every session.
-3. Stop and confirm before any git push — every push needs explicit user
-   approval (push = live deploy).
+3. Stop and confirm before any git push to `main` — every push to main needs
+   explicit user approval (push = live deploy).
 
 ## Current palette — Natural Wellness Luxury (in `:root`)
 Updated June 17, 2026 — client-approved color rebrand. Real token names below
@@ -92,41 +164,60 @@ never re-derive or re-swap colors from it.
   enquiries apart. Honeypot field is Formspree's `_gotcha`.
 - **LIVE endpoint: `https://formspree.io/f/xzepodjv`** — both form `action`s
   (booking.html + contact.html), FIX 18 2026-08-21. Supersedes `xykqvdaw`,
-  which is YEV's LIVE event-submission form in the same Formspree account
-  ("A New Form" in the dashboard, pending rename to "YEV") — never reuse it.
-  Same account pattern as refynme.com, but its OWN form endpoint, never
-  RefynMe's. Notifications currently route to **stivensp44@gmail.com
-  (TEMP)** pending the client destination swap to deblandeaumed@gmail.com —
-  that swap happens in the Formspree DASHBOARD, not code. If the endpoint
-  is unreachable, the main.js guard shows a graceful "email/call us"
-  message.
-- booking.html is an ENQUIRY page (reframed 2026-08-20, FIX 12) — its Formspree
-  form does NOT book appointments. **Zanda live Oct 2026 — all booking CTAs
-  repointed to Zanda appointment-booking.** All 36 `href="booking.html"` CTAs
-  across the 8 pages now open the Zanda client portal in a new tab
-  (`target="_blank" rel="noopener noreferrer"`); booking.html keeps the enquiry
-  form as a fallback and a "Book Online" link in `#booking-embed-slot`.
-  Consequence: booking.html now has NO inbound internal links — direct URL only.
-  The reachable enquiry path is contact.html, which is in every nav.
+  which is YEV's LIVE event-submission form in the same Formspree account —
+  never reuse it. Same account pattern as refynme.com, but its OWN endpoint,
+  never RefynMe's.
+- Notifications route to **deblandeaumed@gmail.com** — CLOSED Sep 2026, verified
+  by live delivery (Daphne receives them). Any future routing change happens in
+  the Formspree DASHBOARD, not code, and is verified only by a real-browser
+  submission landing in the inbox.
+- If the endpoint is unreachable, the main.js guard shows a graceful
+  "email/call us" message.
 
-## Pending from Daphne (slots cleaned 2026-07-04 — no visible placeholders)
-- About bio (3 paragraphs) + credential tags (empty tags were deleted; restore
-  markers are HTML comments in index.html + about.html)
+## Booking — Zanda (live Oct 2026)
+- Daphne's own Zanda account (US region, practice "DeBlandeau Medical Aesthetics
+  and Wellness, PLLC"). Separate from RefynMe's Zanda — never mix them.
+- Client portal: https://clientportal.us.zandahealth.com/clientportal/deblandeaumedicalaestheticsand
+- Booking URL used by every CTA:
+  `https://clientportal.us.zandahealth.com/clientportal/deblandeaumedicalaestheticsand/appointment-booking`
+  with `target="_blank" rel="noopener noreferrer"` — same pattern as refynme.com.
+- All 36 former `href="booking.html"` CTAs open Zanda directly. booking.html keeps
+  a "Book Online" link (in `#booking-embed-slot`) + the enquiry form as fallback,
+  and has NO inbound internal links (direct URL only). The reachable enquiry path
+  is contact.html, in every nav.
+- Zanda portal settings (set 2026-10-06): Accept Online Bookings ON, Show Forms
+  Page ON, Show Upcoming Appointments ON, Allow New Clients to Register ON,
+  Client Verification = Email (SMS not available on the account).
+- Zanda forms (Tools → Form Designer), all imported 2026-10-06, none visible on
+  the portal by default: Neuromodulator Informed Consent, Dermal Filler Informed
+  Consent, Medical Weight Loss and GLP-1 Informed Consent, Photo and Video
+  Consent, Financial Policy and Cash-Pay Agreement, HIPAA Notice of Privacy
+  Practices & Consent, Neuromodulator Initial Assessment, Medical Weight Loss
+  Initial Assessment (all prefixed "DeBlandeau - "). Zanda's stock HIPAA form is
+  deactivated. Source files + builder: `C:\Users\Administrator\Documents\deblandeau-zanda`.
+- If a Book button ever shows Zanda's "not available for this practice" page,
+  the cause is the portal setting, not the site — check Accept Online Bookings.
+
+## Pending from Daphne
+- **Zanda services:** portal still offers Zanda's sample services (Initial
+  Consultation $120, Standard Consultation $170). Site advertises a FREE
+  consult — real service list (name, length, price) needed.
+- **Financial Policy blanks** in Zanda: deposit, no-show fee, declined-card fee,
+  retail return window, payment methods ([DAPHNE TO SET]).
+- **GLP-1 sourcing:** site says "FDA-approved GLP-1 medications"; if she uses
+  compounded semaglutide/tirzepatide, that site copy must change.
+- **Credential:** FNP vs FNP-C against her license (see Content rulings).
+- About bio (3 paragraphs) + credential tags (restore markers are HTML comments
+  in index.html + about.html)
 - Real testimonials → the whole #testimonials section in index.html is
   commented out; re-enable it only when real names/locations exist
 - Business hours — interim copy everywhere is "By appointment only"; per-day
   rows are preserved as an HTML comment in booking.html
-- Professional photos → `assets/images/` is EMPTY on purpose (filenames already
-  referenced in HTML; owner decision: NO stock photos)
+- Professional photos → `assets/images/` holds the referenced filenames; owner
+  decision: NO stock photos
 - Aesthetics service list (services.html — comment marks the slot)
 - Pricing stance; Instagram/Facebook links (social anchors were removed as
   dead — restore markers are comments in each footer)
-- Formspree destination swap — notifications currently go to
-  stivensp44@gmail.com (TEMP); switch the `xzepodjv` form's destination to
-  deblandeaumed@gmail.com in the Formspree dashboard AFTER verifying that
-  address actually receives mail (a previous gmail address bounced 550;
-  swept 2026-07-04) — then live-test BOTH forms on the new endpoint and
-  confirm receipt before calling it done
 
 ## See also
 `README.md` — fuller file map, color/content checklist, and embed instructions.
