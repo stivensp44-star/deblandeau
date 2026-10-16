@@ -524,3 +524,65 @@ textarea.form-control { resize: vertical; min-height: 130px; }
 
 /* Booking page — Zanda portal CTA (moved from inline style, Oct 2026) */
 #booking-embed-slot .btn-primary { width: 100%; justify-content: center; }
+
+/* ============================================================
+   PLO phone swipe rows — services cards (≤768px ONLY)
+   House standard: CSS scroll-snap, ~15% peek, dots via main.js.
+   Desktop layout above 768px is untouched by every rule below.
+   ============================================================ */
+@media (max-width: 768px) {
+  .services-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 2px;
+  }
+  .services-grid::-webkit-scrollbar { display: none; }
+  .services-grid > .service-card {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+  }
+  .swipe-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-top: 1rem;
+  }
+  .swipe-dots span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: background 0.3s var(--ease);
+  }
+  .swipe-dots span.active { background: var(--accent); }
+}
+@media (min-width: 769px) {
+  .swipe-dots { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .services-grid { scroll-behavior: auto; }
+}
+
+/* ============================================================
+   Cross-document page transitions (View Transitions API).
+   Progressive enhancement: browsers without support ignore the
+   at-rule entirely and navigate instantly. No JS involved.
+   ============================================================ */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.22s;
+  animation-timing-function: ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}
