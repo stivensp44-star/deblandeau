@@ -2,3 +2,7 @@
 <FilesMatch "\.md$">
     Require all denied
 </FilesMatch>
+
+# Block public access to AI skill folders (/.claude/, /.agents/); /.well-known/ unaffected
+RewriteEngine On
+RewriteRule ^\.(claude|agents)(/|$) - [F,L]

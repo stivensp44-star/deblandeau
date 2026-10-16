@@ -37,7 +37,7 @@ When an approved Tier 1 change ships, update its hash here in the same commit.
 | File | SHA-256 (16) | Why it is locked |
 |---|---|---|
 | `main.js` | `0F14602ED65EEDD0` | Formspree AJAX submit + guard; nav/reveal logic; swipe-row dots (Oct 2026) |
-| `.htaccess` | `2190C3487F22748B` | Only copy (none server-side); blocks `*.md` from the web |
+| `.htaccess` | `592CB10D3344F5D7` | Only copy (none server-side); blocks `*.md` and `/.claude/`, `/.agents/` from the web (re-hashed 2026-10-11, approved edit) |
 | `assets/favicon.svg` | `8A48D1BE0E2F73E5` | Brand mark; hardcoded hexes are the one allowed exception |
 
 ### Tier 1 — locked regions (verified by invariant counts, not hashes)
