@@ -521,3 +521,6 @@ textarea.form-control { resize: vertical; min-height: 130px; }
   .reveal { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
 }
+
+/* Booking page — Zanda portal CTA (moved from inline style, Oct 2026) */
+#booking-embed-slot .btn-primary { width: 100%; justify-content: center; }
