@@ -50,13 +50,14 @@ When an approved Tier 1 change ships, update its hash here in the same commit.
 | Logo lockup | all 8 pages | `class="logo-name"` = 14 total (2 per page, 1 on privacy/terms); text `eblandeau` is intentional |
 | Legal entity name | all 8 pages | exact string "DeBlandeau Medical Aesthetic and Wellness, PLLC" — never shortened/altered |
 | Cache stamps | all 8 pages | `style.css?v=20261016` ×8, `main.js?v=20261016` ×8, `favicon.svg?v=20260820b` ×16 |
+| 404 page | 404.html | `appointment-booking` ×3 (separate from the 37), `logo-name` ×1, legal name ×3, stamps css/js/fav 1/1/2, `<meta name="robots" content="noindex">` ×1; no Formspree, no brand names, no "free" claims |
 
 ### Tier tables
 | Tier | Files | Rule |
 |---|---|---|
 | **1 — Locked** | everything in the two tables above | Explicit per-item approval; diff shown before commit; hash/invariant updated in same commit |
-| **2 — Guarded** | `style.css` (outside `:root`), page structure/markup of the 8 HTML pages, `CLAUDE.md` | Staging branch only; Stivo reviews diff before merge; style.css change ⇒ bump `?v=` on all 8 pages |
-| **3 — Content** | visible copy inside the 8 pages, `README.md`, `assets/images/` | Staging branch; content-only (no CSS, no endpoints, no structure); merge on Stivo's go |
+| **2 — Guarded** | `style.css` (outside `:root`), page structure/markup of the 8 HTML pages + `404.html`, `robots.txt`, `sitemap.xml`, `CLAUDE.md` | Staging branch only; Stivo reviews diff before merge; style.css change ⇒ bump `?v=` on all 8 pages + 404.html |
+| **3 — Content** | visible copy inside the 8 pages + `404.html`, `README.md`, `assets/images/` | Staging branch; content-only (no CSS, no endpoints, no structure); merge on Stivo's go |
 
 ---------------------------------------------------------------------------
 ## DOCTRINE
