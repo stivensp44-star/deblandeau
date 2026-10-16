@@ -36,7 +36,7 @@ When an approved Tier 1 change ships, update its hash here in the same commit.
 
 | File | SHA-256 (16) | Why it is locked |
 |---|---|---|
-| `main.js` | `769004AA88C5C19D` | Formspree AJAX submit + guard; nav/reveal logic |
+| `main.js` | `0F14602ED65EEDD0` | Formspree AJAX submit + guard; nav/reveal logic; swipe-row dots (Oct 2026) |
 | `.htaccess` | `2190C3487F22748B` | Only copy (none server-side); blocks `*.md` from the web |
 | `assets/favicon.svg` | `8A48D1BE0E2F73E5` | Brand mark; hardcoded hexes are the one allowed exception |
 
@@ -49,7 +49,7 @@ When an approved Tier 1 change ships, update its hash here in the same commit.
 | Zanda booking links | all 8 pages | `appointment-booking` counts: index 6, services 8, about 6, faq 6, contact 4, booking 3, privacy 2, terms 2 (= 37) |
 | Logo lockup | all 8 pages | `class="logo-name"` = 14 total (2 per page, 1 on privacy/terms); text `eblandeau` is intentional |
 | Legal entity name | all 8 pages | exact string "DeBlandeau Medical Aesthetic and Wellness, PLLC" — never shortened/altered |
-| Cache stamps | all 8 pages | `style.css?v=20260912` ×8, `main.js?v=20260821` ×8, `favicon.svg?v=20260820b` ×16 |
+| Cache stamps | all 8 pages | `style.css?v=20261016` ×8, `main.js?v=20261016` ×8, `favicon.svg?v=20260820b` ×16 |
 
 ### Tier tables
 | Tier | Files | Rule |
@@ -94,10 +94,10 @@ When an approved Tier 1 change ships, update its hash here in the same commit.
 - Hostinger CDN: hPanel "purge" is unreliable for edge cache. If a CSS/JS/asset
   change doesn't appear, bump a versioned URL (e.g. `?v=YYYYMMDD`) rather than
   trusting a purge.
-- **Stylesheet cache-bust:** all 8 pages link `style.css?v=20260912`. This is a
+- **Stylesheet cache-bust:** all 8 pages link `style.css?v=20261016`. This is a
   manual version — **bump the date suffix on every `style.css` change** (across
   all pages) so the CDN serves fresh CSS. `main.js` and `assets/favicon.svg`
-  are versioned the same way (currently `?v=20260821` / `?v=20260820b`).
+  are versioned the same way (currently `?v=20261016` / `?v=20260820b`).
   After any bump, update the Cache stamps invariant in the lock zone.
 - HTML pages are NOT versioned — if a user reports stale content that the repo
   and live server both show as correct, it's their browser cache (Ctrl+F5).

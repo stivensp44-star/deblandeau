@@ -148,6 +148,34 @@
     });
   }
 
+  function initSwipeDots() {
+    // PLO swipe-row dots (decorative position indicator; row itself is pure CSS scroll-snap).
+    if (!window.matchMedia || !window.matchMedia('(max-width: 768px)').matches) return;
+    const row = document.querySelector('.services-grid');
+    if (!row || !window.IntersectionObserver) return;
+    const cards = row.querySelectorAll('.service-card');
+    if (cards.length < 2) return;
+    row.setAttribute('tabindex', '0');
+    row.setAttribute('aria-label', 'Services, swipeable list');
+    const dots = document.createElement('div');
+    dots.className = 'swipe-dots';
+    dots.setAttribute('aria-hidden', 'true');
+    cards.forEach(function (card, i) {
+      const dot = document.createElement('span');
+      if (i === 0) dot.classList.add('active');
+      dots.appendChild(dot);
+    });
+    row.insertAdjacentElement('afterend', dots);
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        const idx = Array.prototype.indexOf.call(cards, entry.target);
+        dots.querySelectorAll('span').forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+      });
+    }, { root: row, threshold: 0.6 });
+    cards.forEach(function (card) { observer.observe(card); });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initNavbar();
     initMobileNav();
@@ -155,5 +183,6 @@
     initFaq();
     initForms();
     initAnchorScroll();
+    initSwipeDots();
   });
 })();
