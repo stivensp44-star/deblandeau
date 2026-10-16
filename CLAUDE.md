@@ -28,26 +28,26 @@ naming the item. "Fix it" / "clean up" / "refactor" is NOT approval to touch it.
 If a task appears to require a lock-zone change: STOP, report, wait.
 
 ### Tier 1 registry — hash-locked files
-Hashes are SHA-256 (first 16 hex chars) of the Windows working copy, recorded
-2026-10-06 at main @ e42cdb5. Check: PowerShell
-`(Get-FileHash <file> -Algorithm SHA256).Hash.Substring(0,16)`.
+Hashes are SHA-256 (first 16 hex chars) of the COMMITTED content (`git show HEAD:<file>`),
+re-recorded 2026-10-16 so line-ending/checkout settings can never trip them. Check: PowerShell
+`cmd /c "git cat-file -p HEAD:<file> > %TEMP%\h.bin"` then `(Get-FileHash "$env:TEMP\h.bin" -Algorithm SHA256).Hash.Substring(0,16)`.
 A mismatch at session start = someone changed a locked file → STOP and report.
 When an approved Tier 1 change ships, update its hash here in the same commit.
 
 | File | SHA-256 (16) | Why it is locked |
 |---|---|---|
 | `main.js` | `0F14602ED65EEDD0` | Formspree AJAX submit + guard; nav/reveal logic; swipe-row dots (Oct 2026) |
-| `.htaccess` | `AC121230F0DD9936` | Only copy (none server-side); blocks `*.md` and `/.claude/`, `/.agents/`; ErrorDocument 404 → /404.html (re-hashed 2026-10-16, approved edit; hash = CRLF working copy as checked out) |
-| `assets/favicon.svg` | `8A48D1BE0E2F73E5` | Brand mark; hardcoded hexes are the one allowed exception |
+| `.htaccess` | `4059F883E5DFFC87` | Only copy (none server-side); blocks `*.md` and `/.claude/`, `/.agents/`; ErrorDocument 404 → /404.html |
+| `assets/favicon.svg` | `2AA1762F6DE1D8D4` | Brand mark; hardcoded hexes are the one allowed exception |
 
 ### Tier 1 — locked regions (verified by invariant counts, not hashes)
 | Region | Where | Invariant (must stay exactly) |
 |---|---|---|
-| `:root` palette block | style.css | SHA-256(16) of the `:root {…}` block = `606f0b91a4add5c4` |
+| `:root` palette block | style.css | SHA-256(16) of the `:root {…}` block from committed style.css = `606f0b91a4add5c4` |
 | Formspree forms | booking.html, contact.html | `xzepodjv` = 1 in each; 0 elsewhere; never `xykqvdaw` (YEV) |
 | Dropdown value | booking.html | `<option value="botox">Neuromodulators</option>` — intentional internal value, leave it |
 | Zanda booking links | all 8 pages | `appointment-booking` counts: index 6, services 8, about 6, faq 6, contact 4, booking 3, privacy 2, terms 2 (= 37) |
-| Logo lockup | all 8 pages | `class="logo-name"` = 14 total (2 per page, 1 on privacy/terms); text `eblandeau` is intentional |
+| Logo lockup | all 8 pages | `class="logo-name"` = 14 total (2 per page, 1 on privacy/terms); text `eBlandeau` is intentional |
 | Legal entity name | all 8 pages | exact string "DeBlandeau Medical Aesthetic and Wellness, PLLC" — never shortened/altered |
 | Cache stamps | all 8 pages | `style.css?v=20261016` ×8, `main.js?v=20261016` ×8, `favicon.svg?v=20260820b` ×16 |
 | 404 page | 404.html | `appointment-booking` ×3 (separate from the 37), `logo-name` ×1, legal name ×3, stamps css/js/fav 1/1/2, `<meta name="robots" content="noindex">` ×1; no Formspree, no brand names, no "free" claims |
@@ -146,7 +146,7 @@ never re-derive or re-swap colors from it.
   `var(--accent-deep)`. It appears in all 14 lockups (8 navbars + 6 footer
   brands) and in `assets/favicon.svg` (hardcoded hexes there — favicon is a
   standalone file, the one allowed exception to the no-hardcoding rule).
-- **`<span class="logo-name">eblandeau</span>` is INTENTIONAL, not a typo.**
+- **`<span class="logo-name">eBlandeau</span>` is INTENTIONAL, not a typo.**
   The SVG mark is the "D"; CSS uppercases the rest so the lockup reads
   DEBLANDEAU as one word. Full business name lives in each anchor's
   `aria-label` for assistive tech. Never "fix" this text.
