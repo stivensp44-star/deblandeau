@@ -6,3 +6,6 @@
 # Block public access to AI skill folders (/.claude/, /.agents/); /.well-known/ unaffected
 RewriteEngine On
 RewriteRule ^\.(claude|agents)(/|$) - [F,L]
+
+# Branded 404 page (approved edit 2026-10-16)
+ErrorDocument 404 /404.html
