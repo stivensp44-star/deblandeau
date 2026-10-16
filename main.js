@@ -156,7 +156,6 @@
     const cards = row.querySelectorAll('.service-card');
     if (cards.length < 2) return;
     row.setAttribute('tabindex', '0');
-    row.setAttribute('role', 'group');
     row.setAttribute('aria-label', 'Services, swipeable list');
     const dots = document.createElement('div');
     dots.className = 'swipe-dots';
