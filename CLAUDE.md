@@ -49,7 +49,7 @@ When an approved Tier 1 change ships, update its hash here in the same commit.
 | Zanda booking links | all 8 pages | `appointment-booking` counts: index 6, services 8, about 6, faq 6, contact 4, booking 3, privacy 2, terms 2 (= 37) |
 | Logo lockup | all 8 pages | `class="logo-name"` = 14 total (2 per page, 1 on privacy/terms); text `eBlandeau` is intentional |
 | Legal entity name | all 8 pages | exact string "DeBlandeau Medical Aesthetic and Wellness, PLLC" — never shortened/altered |
-| Cache stamps | all 8 pages | `style.css?v=20261017b` ×8, `main.js?v=20261016` ×8, `favicon.svg?v=20260820b` ×16 |
+| Cache stamps | all 8 pages | `style.css?v=20261017c` ×8, `main.js?v=20261016` ×8, `favicon.svg?v=20260820b` ×16 |
 | 404 page | 404.html | `appointment-booking` ×3 (separate from the 37), `logo-name` ×1, legal name ×3, stamps css/js/fav 1/1/2, `<meta name="robots" content="noindex">` ×1; no Formspree, no brand names, no "free" claims |
 
 ### Tier tables
@@ -95,7 +95,7 @@ When an approved Tier 1 change ships, update its hash here in the same commit.
 - Hostinger CDN: hPanel "purge" is unreliable for edge cache. If a CSS/JS/asset
   change doesn't appear, bump a versioned URL (e.g. `?v=YYYYMMDD`) rather than
   trusting a purge.
-- **Stylesheet cache-bust:** all 8 pages link `style.css?v=20261017b`. This is a
+- **Stylesheet cache-bust:** all 8 pages link `style.css?v=20261017c`. This is a
   manual version — **bump the date suffix on every `style.css` change** (across
   all pages) so the CDN serves fresh CSS. `main.js` and `assets/favicon.svg`
   are versioned the same way (currently `?v=20261016` / `?v=20260820b`).
