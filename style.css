@@ -586,3 +586,130 @@ textarea.form-control { resize: vertical; min-height: 130px; }
     animation: none !important;
   }
 }
+
+/* ============================================================
+   HERO PORTRAIT VARIANT — .hero-right--portrait   [added 2026-10-17]
+   Flyer-style circular portrait + quote panel for the index.html
+   hero-right. All selectors are scoped under .hero-right--portrait;
+   no existing rule is edited. Only new literal color is #E3DFCF
+   (the panel background). Everything else uses existing tokens.
+   ============================================================ */
+.hero-right--portrait {
+  background: #E3DFCF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem 4rem;
+  overflow: hidden;
+}
+/* Cancel the base .hero-right gradient overlay + gold line for this variant only */
+.hero-right--portrait::before,
+.hero-right--portrait::after { content: none; }
+
+/* Portrait wrap + its decorative dark block behind the circle */
+.hero-right--portrait .hero-portrait-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.hero-right--portrait .hero-portrait-wrap::before {
+  content: '';
+  position: absolute;
+  right: -2rem;
+  top: 18%;
+  bottom: 12%;
+  width: 42%;
+  background: var(--dark);
+}
+
+/* The circular portrait: white mat + sage inset ring */
+.hero-right--portrait .hero-portrait {
+  position: relative;
+  width: min(400px, 80%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 12px;
+  background: var(--white);
+  box-shadow: 0 20px 50px rgba(var(--dark-rgb), 0.18);
+}
+.hero-right--portrait .hero-portrait::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 9px var(--accent-deep);
+  pointer-events: none;
+}
+.hero-right--portrait .hero-portrait img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Decorative leaf, behind the portrait */
+.hero-right--portrait .hero-leaf {
+  position: absolute;
+  z-index: 1;
+  left: -30px;
+  top: 52%;
+  width: min(140px, 26%);
+}
+
+/* Quote panel */
+.hero-right--portrait .hero-quote {
+  position: relative;
+  max-width: 400px;
+  margin-top: 2.2rem;
+  text-align: center;
+  z-index: 2;
+}
+.hero-right--portrait .hero-quote-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  line-height: 1.4;
+  color: var(--text);
+}
+.hero-right--portrait .hero-quote-name,
+.hero-right--portrait .hero-quote-title {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+.hero-right--portrait .hero-quote-name {
+  color: var(--text);
+  font-weight: 500;
+  margin-top: 1rem;
+}
+.hero-right--portrait .hero-quote-title {
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+}
+
+/* Band */
+.hero-right--portrait .hero-band {
+  position: relative;
+  margin-top: 2rem;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-align: center;
+  z-index: 2;
+}
+.hero-right--portrait .hero-band::before { content: '\2726 '; color: var(--accent); }
+.hero-right--portrait .hero-band::after  { content: ' \2726'; color: var(--accent); }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-right--portrait { aspect-ratio: auto; padding: 3.5rem 1.5rem 3rem; }
+  .hero-right--portrait .hero-portrait { width: min(290px, 78%); }
+  .hero-right--portrait .hero-portrait-wrap::before { right: -1.5rem; width: 34%; }
+  .hero-right--portrait .hero-leaf { width: 90px; left: -40px; top: 36%; }
+}
