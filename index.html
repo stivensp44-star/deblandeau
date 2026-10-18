@@ -28,7 +28,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" />
   <link rel="preload" as="image" href="assets/images/hero-daphne-circle.jpg" />
-  <link rel="stylesheet" href="style.css?v=20261017" />
+  <link rel="stylesheet" href="style.css?v=20261017b" />
 
   <script type="application/ld+json">
   {
@@ -217,8 +217,26 @@
   </section>
 
   <section class="about-teaser" id="about" aria-label="About Daphne">
-    <div class="about-photo-wrap">
-      <img src="assets/images/about-daphne.jpg" alt="Daphne Matthews, NP — founder and lead provider" loading="lazy" onerror="this.style.visibility='hidden'" />
+    <div class="about-photo-wrap about-photo-wrap--portrait">
+      <svg class="about-leaf" aria-hidden="true" viewBox="0 0 200 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="aboutLeafGrad" x1="0.88" y1="0" x2="0.12" y2="1">
+            <stop offset="0" stop-color="#8FA18F" />
+            <stop offset="1" stop-color="#D4AF37" />
+          </linearGradient>
+        </defs>
+        <path d="M100 8C44 64 22 150 100 252C178 150 156 64 100 8Z" fill="url(#aboutLeafGrad)" />
+        <path d="M100 36V232" stroke="#F6F2EC" stroke-width="3" stroke-linecap="round" opacity="0.55" />
+        <path d="M100 96C80 104 64 118 54 140" stroke="#F6F2EC" stroke-width="2.5" stroke-linecap="round" opacity="0.5" />
+        <path d="M100 96C120 104 136 118 146 140" stroke="#F6F2EC" stroke-width="2.5" stroke-linecap="round" opacity="0.5" />
+        <path d="M100 150C84 158 72 170 64 188" stroke="#F6F2EC" stroke-width="2.5" stroke-linecap="round" opacity="0.5" />
+        <path d="M100 150C116 158 128 170 136 188" stroke="#F6F2EC" stroke-width="2.5" stroke-linecap="round" opacity="0.5" />
+      </svg>
+      <div class="about-portrait-wrap">
+        <div class="about-portrait">
+          <img src="assets/images/about-daphne-circle.jpg" alt="Daphne Matthews, NP — founder and lead provider" width="800" height="800" loading="lazy" />
+        </div>
+      </div>
     </div>
     <div class="about-content">
       <p class="eyebrow">Meet Your Provider</p>
