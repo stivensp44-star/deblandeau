@@ -202,13 +202,17 @@ h4, h5, h6    { font-family: var(--font-body); font-weight: 500; }
   gap: 0;
   line-height: 1;
 }
-.logo-img { display: block; width: auto; height: 96px; transition: height var(--transition), opacity var(--transition-fast); }
+.navbar .nav-logo { flex-direction: column; align-items: center; }
+.logo-img { display: block; width: auto; transition: height var(--transition), opacity var(--transition-fast); }
 .nav-logo:hover .logo-img { opacity: 0.85; }
-.navbar.scrolled .logo-img { height: 72px; }
+.navbar .logo-img { height: 80px; }
+.navbar.scrolled .logo-img { height: 60px; }
 .footer-brand .logo-img { height: auto; width: 200px; max-width: 100%; }
+.logo-tagline { font-family: var(--font-body); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-top: 0.35rem; white-space: nowrap; }
 @media (max-width: 768px) {
-  .navbar .logo-img { height: 72px; }
-  .navbar.scrolled .logo-img { height: 56px; }
+  .navbar .logo-img { height: 60px; }
+  .navbar.scrolled .logo-img { height: 46px; }
+  .logo-tagline { font-size: 0.52rem; letter-spacing: 0.18em; }
 }
 .nav-links { display: flex; align-items: center; gap: 2.5rem; }
 .nav-links a {
