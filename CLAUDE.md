@@ -47,10 +47,10 @@ When an approved Tier 1 change ships, update its hash here in the same commit.
 | Formspree forms | booking.html, contact.html | `xzepodjv` = 1 in each; 0 elsewhere; never `xykqvdaw` (YEV) |
 | Dropdown value | booking.html | `<option value="botox">Neuromodulators</option>` — intentional internal value, leave it |
 | Zanda booking links | all 8 pages | `appointment-booking` counts: index 6, services 8, about 6, faq 6, contact 4, booking 3, privacy 2, terms 2 (= 37) |
-| Logo lockup | all 9 HTML files | `class="logo-img"` = 15 total: NAV `logo-nav.webp` ×9 (336x240, no baked tagline; root-absolute `/assets/…` on 404.html only) each followed by `<span class="logo-tagline">Medical Aesthetic &amp; Wellness</span>` (×9); FOOTER `logo-full.webp?v=20261102c` ×6 (720x843 richer art, index/services/about/faq/contact/booking); `logo-mark`/`logo-text`/`logo-name`/`logo-sub` = 0 |
+| Logo lockup | all 9 HTML files | `class="logo-img"` = 15 total: NAV `logo-wide.webp?v=20261102` ×9 (927x216 side-by-side; root-absolute `/assets/…` on 404.html only); FOOTER `logo-full.webp?v=20261102c` ×6 (720x843 stacked, index/services/about/faq/contact/booking); retired classes `logo-mark`/`logo-text`/`logo-name`/`logo-sub`/`logo-tagline` = 0 |
 | Legal entity name | all 8 pages | exact string "DeBlandeau Medical Aesthetic and Wellness, PLLC" — never shortened/altered |
-| Cache stamps | all 8 pages | `style.css?v=20261102b` ×8, `main.js?v=20261016` ×8, `favicon.svg?v=20260820b` ×16 |
-| 404 page | 404.html | `appointment-booking` ×3 (separate from the 37), `class="logo-img"` ×1 (image logo; src root-absolute `/assets/…` like all 404 URLs), legal name ×3, stamps css/js/fav 1/1/2 (css = `?v=20261102b`), `<meta name="robots" content="noindex">` ×1; no Formspree, no brand names, no "free" claims |
+| Cache stamps | all 8 pages | `style.css?v=20261102c` ×8, `main.js?v=20261016` ×8, `favicon.svg?v=20260820b` ×16 |
+| 404 page | 404.html | `appointment-booking` ×3 (separate from the 37), `class="logo-img"` ×1 (image logo; src root-absolute `/assets/…` like all 404 URLs), legal name ×3, stamps css/js/fav 1/1/2 (css = `?v=20261102c`), `<meta name="robots" content="noindex">` ×1; no Formspree, no brand names, no "free" claims |
 
 ### Tier tables
 | Tier | Files | Rule |
@@ -95,7 +95,7 @@ When an approved Tier 1 change ships, update its hash here in the same commit.
 - Hostinger CDN: hPanel "purge" is unreliable for edge cache. If a CSS/JS/asset
   change doesn't appear, bump a versioned URL (e.g. `?v=YYYYMMDD`) rather than
   trusting a purge.
-- **Stylesheet cache-bust:** all 8 pages link `style.css?v=20261102b`. This is a
+- **Stylesheet cache-bust:** all 8 pages link `style.css?v=20261102c`. This is a
   manual version — **bump the date suffix on every `style.css` change** (across
   all pages) so the CDN serves fresh CSS. `main.js` and `assets/favicon.svg`
   are versioned the same way (currently `?v=20261016` / `?v=20260820b`).
@@ -141,24 +141,36 @@ Palette source of truth: the client brand board (IMG_5753.jpeg, board tagline
 "Refined Care. Elevated Confidence."). Its five swatches ARE the tokens above —
 never re-derive or re-swap colors from it.
 
-## Logo & wordmark lockup (applied 2026-07-04, live @ 4c6c51b)
-- The brand mark (brushed-gold serif "D" + 6-leaf sage sprig) is an **inline
-  SVG recreation** of the brand-board monogram, using `var(--accent)` /
-  `var(--accent-deep)`. It appears in all 14 lockups (8 navbars + 6 footer
-  brands) and in `assets/favicon.svg` (hardcoded hexes there — favicon is a
-  standalone file, the one allowed exception to the no-hardcoding rule).
-- **`<span class="logo-name">eBlandeau</span>` is INTENTIONAL, not a typo.**
-  The SVG mark is the "D"; CSS uppercases the rest so the lockup reads
-  DEBLANDEAU as one word. Full business name lives in each anchor's
-  `aria-label` for assistive tech. Never "fix" this text.
-- Lockup mechanics (style.css): `.nav-logo` uses `align-items: baseline`;
-  `.logo-mark` is 48px (nav) / 56px (footer) with `margin-right: -0.35rem`
-  (D glyph stops short of its viewBox edge) and `position: relative;
-  top: 10px/11px` (= 13/64 of height, the gap between the D-glyph baseline
-  y=51 and the svg bottom) so the D's foot sits on EBLANDEAU's baseline.
-  Hover pops the mark to `scale(1.15)`.
-- If the client ever sends an official vector logo export, it replaces the
-  recreated mark as a straight swap.
+## Logo system (client image logo, applied Nov 2 2026)
+The 2026-07 inline-SVG wordmark lockup (logo-mark/logo-text/logo-name/logo-sub,
+"eBlandeau" span) is RETIRED — those classes must grep 0 in HTML and CSS.
+Current system:
+- **NAV (all 9 pages):** `assets/images/logo-wide.webp` (927x216, side-by-side:
+  DB monogram + DeBlandeau + tagline, client-chosen Nov 2 2026). Heights:
+  72px / 58px scrolled; ≤768px: 60px / 50px scrolled with
+  `max-width: calc(100vw - 110px); object-fit: contain` so it can never hit
+  the hamburger on narrow phones.
+- **FOOTER (6 pages: index/services/about/faq/contact/booking):**
+  `assets/images/logo-full.webp` (720x843 stacked), rendered 200px wide.
+- **404.html** uses root-absolute `/assets/…` srcs (ErrorDocument serves it at
+  any URL depth — relative srcs would break on deep 404s).
+- Every logo `<img>` has `alt=""` because each anchor's `aria-label` carries
+  the full business name — the aria-label IS the accessible name; never add
+  alt text or a visible name span.
+- **Master source is the client file `newlogo.png` (dark baked background).**
+  Site assets are transparent cutouts made from it. Never serve newlogo.png.
+- `assets/favicon.svg` still shows the retired D-sprig mark (Tier 1, own task).
+
+## Asset rules (locked Nov 2 2026)
+- **ASSET CACHE RULE:** when an image's content changes, give it a new
+  filename or bump its `?v=` on every src, in the same commit. Images cache
+  7 days (CDN + browser) — new bytes under an old URL silently serve stale.
+- HTML is served `Cache-Control: no-cache` (.htaccess), so markup changes
+  show immediately; versioned assets follow the asset cache rule above.
+- **ASSET HANDOFF RULE:** files made in Claude chat must be downloaded by
+  Stivo before Code can use them. Verify by dimensions + visual/hash check,
+  never by byte size (downloads re-encode by a few KB). Duplicate downloads
+  arrive as `name_1`, `name_2`, … — pick by newest/hash and report which.
 
 ## Forms (booking.html + contact.html)
 - POST to Formspree via `fetch` in `main.js` (AJAX — user stays on the page);
