@@ -9,3 +9,9 @@ RewriteRule ^\.(claude|agents)(/|$) - [F,L]
 
 # Branded 404 page (approved edit 2026-10-16)
 ErrorDocument 404 /404.html
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header always set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

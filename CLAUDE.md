@@ -37,7 +37,7 @@ When an approved Tier 1 change ships, update its hash here in the same commit.
 | File | SHA-256 (16) | Why it is locked |
 |---|---|---|
 | `main.js` | `0F14602ED65EEDD0` | Formspree AJAX submit + guard; nav/reveal logic; swipe-row dots (Oct 2026) |
-| `.htaccess` | `4059F883E5DFFC87` | Only copy (none server-side); blocks `*.md` and `/.claude/`, `/.agents/`; ErrorDocument 404 → /404.html |
+| `.htaccess` | `214ED39BD533E606` | Only copy (none server-side); blocks `*.md` and `/.claude/`, `/.agents/`; ErrorDocument 404 → /404.html; HTML Cache-Control no-cache (Nov 2026) |
 | `assets/favicon.svg` | `2AA1762F6DE1D8D4` | Brand mark; hardcoded hexes are the one allowed exception |
 
 ### Tier 1 — locked regions (verified by invariant counts, not hashes)
@@ -102,6 +102,7 @@ When an approved Tier 1 change ships, update its hash here in the same commit.
   After any bump, update the Cache stamps invariant in the lock zone.
 - HTML pages are NOT versioned — if a user reports stale content that the repo
   and live server both show as correct, it's their browser cache (Ctrl+F5).
+- HTML served Cache-Control: no-cache (Nov 2 2026) so deploys show immediately.
 - `.htaccess` (repo-managed, the only copy) denies `*.md`, so CLAUDE.md /
   README.md return 403 publicly. http→https is platform-level (Hostinger).
 
