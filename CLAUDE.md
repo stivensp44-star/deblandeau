@@ -49,8 +49,8 @@ When an approved Tier 1 change ships, update its hash here in the same commit.
 | Zanda booking links | all 8 pages | `appointment-booking` counts: index 6, services 8, about 6, faq 6, contact 4, booking 3, privacy 2, terms 2 (= 37) |
 | Logo lockup | all 9 HTML files | `class="logo-img"` = 15 total: NAV `logo-wide.webp?v=20261102` ×9 (927x216 side-by-side; root-absolute `/assets/…` on 404.html only); FOOTER `logo-full.webp?v=20261102c` ×6 (720x843 stacked, index/services/about/faq/contact/booking); retired classes `logo-mark`/`logo-text`/`logo-name`/`logo-sub`/`logo-tagline` = 0 |
 | Legal entity name | all 8 pages | exact string "DeBlandeau Medical Aesthetic and Wellness, PLLC" — never shortened/altered |
-| Cache stamps | all 8 pages | `style.css?v=20261102c` ×8, `main.js?v=20261016` ×8, `favicon.svg?v=20260820b` ×16 |
-| 404 page | 404.html | `appointment-booking` ×3 (separate from the 37), `class="logo-img"` ×1 (image logo; src root-absolute `/assets/…` like all 404 URLs), legal name ×3, stamps css/js/fav 1/1/2 (css = `?v=20261102c`), `<meta name="robots" content="noindex">` ×1; no Formspree, no brand names, no "free" claims |
+| Cache stamps | all 8 pages | `style.css?v=20261102d` ×8, `main.js?v=20261016` ×8, `favicon.svg?v=20260820b` ×16 |
+| 404 page | 404.html | `appointment-booking` ×3 (separate from the 37), `class="logo-img"` ×1 (image logo; src root-absolute `/assets/…` like all 404 URLs), legal name ×3, stamps css/js/fav 1/1/2 (css = `?v=20261102d`), `<meta name="robots" content="noindex">` ×1; no Formspree, no brand names, no "free" claims |
 
 ### Tier tables
 | Tier | Files | Rule |
@@ -95,7 +95,7 @@ When an approved Tier 1 change ships, update its hash here in the same commit.
 - Hostinger CDN: hPanel "purge" is unreliable for edge cache. If a CSS/JS/asset
   change doesn't appear, bump a versioned URL (e.g. `?v=YYYYMMDD`) rather than
   trusting a purge.
-- **Stylesheet cache-bust:** all 8 pages link `style.css?v=20261102c`. This is a
+- **Stylesheet cache-bust:** all 8 pages link `style.css?v=20261102d`. This is a
   manual version — **bump the date suffix on every `style.css` change** (across
   all pages) so the CDN serves fresh CSS. `main.js` and `assets/favicon.svg`
   are versioned the same way (currently `?v=20261016` / `?v=20260820b`).
@@ -149,7 +149,12 @@ Current system:
   DB monogram + DeBlandeau + tagline, client-chosen Nov 2 2026). Heights:
   72px / 58px scrolled; ≤768px: 60px / 50px scrolled with
   `max-width: calc(100vw - 110px); object-fit: contain` so it can never hit
-  the hamburger on narrow phones.
+  the hamburger on narrow phones; the same guard also applies globally on
+  `.navbar .logo-img` so the logo can never be flex-squashed at any width.
+- **Desktop nav shows above 1100px; ≤1100px uses the hamburger (wide logo
+  needs the room).** The nav-collapse rules (`.nav-links`/`.nav-cta` hide,
+  `.nav-toggle`/`.nav-mobile` show) live in their own
+  `@media (max-width: 1100px)` block.
 - **FOOTER (6 pages: index/services/about/faq/contact/booking):**
   `assets/images/logo-full.webp` (720x843 stacked), rendered 200px wide.
 - **404.html** uses root-absolute `/assets/…` srcs (ErrorDocument serves it at
