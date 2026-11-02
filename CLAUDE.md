@@ -47,10 +47,10 @@ When an approved Tier 1 change ships, update its hash here in the same commit.
 | Formspree forms | booking.html, contact.html | `xzepodjv` = 1 in each; 0 elsewhere; never `xykqvdaw` (YEV) |
 | Dropdown value | booking.html | `<option value="botox">Neuromodulators</option>` — intentional internal value, leave it |
 | Zanda booking links | all 8 pages | `appointment-booking` counts: index 6, services 8, about 6, faq 6, contact 4, booking 3, privacy 2, terms 2 (= 37) |
-| Logo lockup | all 9 HTML files | `class="logo-img"` = 15 total (2 each on index/services/about/faq/contact/booking; 1 each on privacy/terms/404), all `src="assets/images/logo-full.webp"` (client image logo, nav + footer); `logo-mark`/`logo-text`/`logo-name`/`logo-sub` = 0 |
+| Logo lockup | all 9 HTML files | `class="logo-img"` = 15 total (2 each on index/services/about/faq/contact/booking; 1 each on privacy/terms/404), all pointing at `assets/images/logo-full.webp` (client image logo, nav + footer) — `src="assets/…"` ×14 on the 8 pages, `src="/assets/…"` root-absolute ×1 on 404.html (ErrorDocument serves it at any URL depth); `logo-mark`/`logo-text`/`logo-name`/`logo-sub` = 0 |
 | Legal entity name | all 8 pages | exact string "DeBlandeau Medical Aesthetic and Wellness, PLLC" — never shortened/altered |
 | Cache stamps | all 8 pages | `style.css?v=20261102a` ×8, `main.js?v=20261016` ×8, `favicon.svg?v=20260820b` ×16 |
-| 404 page | 404.html | `appointment-booking` ×3 (separate from the 37), `class="logo-img"` ×1 (image logo, same as the 8 pages), legal name ×3, stamps css/js/fav 1/1/2 (css = `?v=20261102a`), `<meta name="robots" content="noindex">` ×1; no Formspree, no brand names, no "free" claims |
+| 404 page | 404.html | `appointment-booking` ×3 (separate from the 37), `class="logo-img"` ×1 (image logo; src root-absolute `/assets/…` like all 404 URLs), legal name ×3, stamps css/js/fav 1/1/2 (css = `?v=20261102a`), `<meta name="robots" content="noindex">` ×1; no Formspree, no brand names, no "free" claims |
 
 ### Tier tables
 | Tier | Files | Rule |
